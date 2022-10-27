@@ -1,0 +1,24 @@
+.card__save {
+  position: absolute;
+  padding: 0.6rem;
+  border: none;
+  right: 0;
+  margin: 0.25rem;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: hsla(0, 0%, 100%, 0.75);
+}
+
+.card__save[aria-pressed="false"] svg {
+  stroke: var(--clr-accent-500);
+  fill: var(--clr-accent-500);
+}
+
+.card__save[aria-pressed="true"] {
+  border: 2px solid var(--clr-accent-800);
+}
+
+.card__save[aria-pressed="true"] svg {
+  stroke: var(--clr-accent-800);
+  fill: var(--clr-accent-800);
+}
