@@ -1,0 +1,130 @@
+.footer {
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-accent-500);
+}
+
+.footer__superior {
+  margin: 0 auto;
+  max-width: var(--max-width-desktop);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: stretch;
+  gap: 1rem;
+}
+
+.footer__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__cta {
+    flex: 1;
+    order: 1;
+  }
+}
+
+.footer__btn {
+  padding: 0.5rem 5rem;
+  border: 1px solid var(--clr-neutral-100);
+  border-radius: 1rem;
+  text-transform: uppercase;
+  color: var(--clr-neutral-100);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.footer__btn:hover {
+  color: var(--clr-accent-500);
+  background-color: var(--clr-neutral-100);
+  transition: all 0.15s ease-in;
+}
+
+.footer__nav {
+  flex: 1;
+}
+
+.footer__nav li {
+  padding: 0.5rem;
+  border-top: 1px solid var(--clr-accent-900);
+}
+
+.footer__nav li:hover {
+  color: var(--clr-accent-500);
+  background-color: var(--clr-neutral-100);
+  transition: all 0.15s ease-in;
+}
+
+.footer__link {
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--cl-neutral-100);
+}
+
+.footer__inferior {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  color: #ddb4ff;
+  background-color: var(--clr-accent-900);
+}
+
+@media screen and (min-width: 750px) {
+  .footer__inferior {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.footer__social {
+  gap: 1.5rem;
+  background-color: var(--clr-accent-900);
+}
+
+@media screen and (min-width: 750px) {
+  .footer__social {
+    justify-content: flex-end;
+    order: 1;
+    flex: 1;
+  }
+}
+
+.footer__social .fa-brands {
+  font-size: var(--fs-300);
+}
+
+.footer__social .fa-brands:hover {
+  color: var(--clr-neutral-100);
+  cursor: pointer;
+}
+
+.footer__legal {
+  font-size: var(--fs-100);
+  text-align: center;
+}
+@media screen and (min-width: 750px) {
+  .footer__legal {
+    flex: 1;
+    text-align: left;
+    font-size: calc(var(--fs-100) - 0.25rem);
+  }
+}
+
+.footer__legal span {
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__legal span {
+    display: initial;
+  }
+}
