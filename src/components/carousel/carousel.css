@@ -1,0 +1,52 @@
+.carousel {
+  position: relative;
+  display: grid;
+  grid-template-rows: 80vh;
+}
+
+.carousel__active {
+  align-self: stretch;
+  justify-self: stretch;
+  border-radius: 2rem;
+  max-height: 100%;
+  animation-name: toFront;
+}
+
+@keyframes toFront {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control button {
+  background-color: transparent;
+  border: none;
+}
+
+.icon-toggle {
+  width: 64px;
+  height: 64px;
+  fill: #fff;
+  border-radius: 999px;
+  padding: 6px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.icon-toggle:hover {
+  cursor: pointer;
+  background-color: #fff;
+  fill: rgba(0, 0, 0, 0.5);
+}
