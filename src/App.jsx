@@ -1,14 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import { Pet } from "./Pet.jsx";
+
+// delete the Pet component
 
 const App = () => {
-  return (
-    <div>
-      <h1>Adopt me</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 const container = document.getElementById("root");
-const root = ReactDOM.createRoot(container);
-root.render(React.createElement(App));
+const root = createRoot(container);
+root.render(<App />);
