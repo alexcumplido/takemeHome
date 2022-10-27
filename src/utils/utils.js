@@ -1,35 +1,36 @@
-import { useState, useEffect, useDebugValue } from "react";
-import { client } from "./utils.js";
+import { Client } from "@petfinder/petfinder-js";
 
-const localCache = {};
+export const inputs = {
+  size: ["Small", "Medium", "Large", "Extra Large"],
+  age: ["Baby", "Young", "Adult", "Senior"],
+  gender: ["Female", "Male"],
+  coat: ["Hairless", "Short", "Medium", "Long", "Wire", "Curly"],
+  care: ["House-trained"],
+};
 
-export function useBreedList(animal) {
-  const [breedList, setBreedList] = useState([]);
-  const [status, setStatus] = useState("unloaded");
-  useDebugValue(`Number of value in cache ${Object.keys(localCache)}`);
+const petApi = {
+  API_KEY: "wb3Pi0bmejW1JKL079AroKYF9MCWKzvrHliSTvt7UBbCC1Blch",
+  API_SRC: "xM4qJE5ytYzMhHt37v0FEG6OeN5t0ko6FkkBgWVt",
+};
 
-  useEffect(
-    function () {
-      if (!animal) {
-        setBreedList([]);
-      } else if (localCache[animal]) {
-        setBreedList(localCache[animal]);
-      } else {
-        setBreedList([]);
-        setStatus("loading");
-        client.animalData
-          .breeds(animal)
-          .then(function onFulfillment(responseObject) {
-            localCache[animal] = responseObject.data.breeds || [];
-            setBreedList(localCache[animal]);
-            setStatus("loaded");
-          })
-          .catch(function onRejection(responseObject) {
-            console.log(responseObject);
-          });
+export const client = new Client({
+  apiKey: petApi.API_KEY,
+  secret: petApi.API_SRC,
+});
+export function _map(list, callback) {
+  let storage = [];
+  try {
+    if (Array.isArray(list)) {
+      for (let index = 0; index < list.length; index++) {
+        storage.push(callback(list[index], index, list));
       }
-    },
-    [animal]
-  );
-  return [breedList, status];
+    } else {
+      for (let key in list) {
+        storage.push(callback(list[key], key, list));
+      }
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+  return storage;
 }
