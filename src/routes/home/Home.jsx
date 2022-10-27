@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { client } from "../../utils/utils.js";
-import { Results } from "../../components/results/Results.js";
-import { Hero } from "../../components/hero/Hero.js";
-import { Loader } from "../../components/loader/Loader.js";
+import { Results } from "../../components/results/Results.jsx";
+import { Hero } from "../../components/hero/Hero.jsx";
+import { Loader } from "../../components/loader/Loader.jsx";
 
 export function Home() {
   const [homeContent, setHomeContent] = useState([]);

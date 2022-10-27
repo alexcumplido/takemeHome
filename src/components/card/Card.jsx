@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ButtonSave } from "../buttonSave/ButtonSave.js";
+import { ButtonSave } from "../buttonSave/ButtonSave.jsx";
 
 export function Card(params) {
   const { pet } = params;

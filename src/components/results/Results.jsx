@@ -1,4 +1,4 @@
-import { Card } from "../card/Card.js";
+import { Card } from "../card/Card.jsx";
 
 export function Results(params) {
   const { pets } = params;

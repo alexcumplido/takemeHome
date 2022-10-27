@@ -1,12 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { client, inputs } from "../../utils/utils.js";
-import { Results } from "../../components/results/Results.js";
+import { Results } from "../../components/results/Results.jsx";
 import { useBreedList } from "../../utils/useBreedList.js";
-import { ThemeContext } from "../../context/ThemeContext.js";
-import { Loader } from "../../components/loader/Loader.js";
-import { Select } from "../../components/select/Select.js";
-import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.js";
-import { Button } from "../../components/button/Button.js";
+import { Loader } from "../../components/loader/Loader.jsx";
+import { Select } from "../../components/select/Select.jsx";
+import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.jsx";
+import { Button } from "../../components/button/Button.jsx";
 
 export function SearchParams() {
   const [animals, setAnimals] = useState("");

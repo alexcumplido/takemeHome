@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ThemeContext } from "../../context/ThemeContext.js";
 import { client } from "../../utils/utils.js";
-import { ErrorBoundary } from "../../classComponents/ErrorBoundary.js";
-import { Loader } from "../../components/loader/Loader.js";
-import { ButtonSave } from "../../components/buttonSave/ButtonSave.js";
-import { Carousel } from "../../components/carousel/Carousel.js";
-import { Modal } from "../../components/modal/Modal.js";
+import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
+import { Loader } from "../../components/loader/Loader.jsx";
+import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
+import { Carousel } from "../../components/carousel/Carousel.jsx";
+import { Modal } from "../../components/modal/Modal.jsx";
 
 export function Details() {
   let { id, save } = useParams();

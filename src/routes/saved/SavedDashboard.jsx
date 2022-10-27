@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Results } from "../../components/results/Results.js";
+import { Results } from "../../components/results/Results.jsx";
 import { client } from "../../utils/utils.js";
-import { Button } from "../../components/button/Button.js";
+import { Button } from "../../components/button/Button.jsx";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
