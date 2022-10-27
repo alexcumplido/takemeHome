@@ -21,9 +21,9 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <StrictMode>
-      {/* <ThemeContext.Provider value={theme}> */}
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
+          <Header />
           <Routes>
             <Route path="/details/:id/:save" element={<WrappedDetails />} />
             <Route path="/dashboard" element={<SavedDashboard />} />
@@ -33,9 +33,11 @@ const App = () => {
           </Routes>
           <Footer />
         </QueryClientProvider>
-        <Header />
       </BrowserRouter>
-      {/* </ThemeContext.Provider> */}
     </StrictMode>
   );
 };
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
