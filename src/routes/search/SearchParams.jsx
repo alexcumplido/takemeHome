@@ -70,6 +70,7 @@ export function SearchParams() {
       paginateRequest();
     }
   }
+
   function decrementPage() {
     if (pagination && pagination.current_page > 1) {
       setCounterPage(counterPage--);
