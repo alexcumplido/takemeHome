@@ -1,6 +1,10 @@
-export function ButtonSave({ save, handleClick }) {
+export function ButtonSave({ isPressed, handleClick }) {
   return (
-    <button className="card__save" aria-pressed={save} onClick={handleClick}>
+    <button
+      className="card__save"
+      aria-pressed={isPressed}
+      onClick={handleClick}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
