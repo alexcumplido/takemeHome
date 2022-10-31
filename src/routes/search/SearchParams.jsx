@@ -176,7 +176,7 @@ export function SearchParams() {
         <Button
           disabled={!animal}
           handleOnclick={submit}
-          text={"submit"}
+          text={"search"}
           styleClass="search__submit"
         />
       </form>

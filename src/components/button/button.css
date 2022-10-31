@@ -4,7 +4,7 @@
   border: none;
   border-radius: 0.25rem;
   color: var(--clr-neutral-100);
-  background-color: var(--clr-accent-900);
+  background-color: var(--clr-accent-500);
   box-shadow: 0 1px 3px rgba(77, 71, 81, 0.2);
   cursor: pointer;
 }
