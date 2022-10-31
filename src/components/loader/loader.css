@@ -6,7 +6,7 @@
   aspect-ratio: 1;
   display: grid;
   mask: conic-gradient(from 22deg, #0003, #000);
-  animation: load 1s steps(8) infinite;
+  animation: spin 2s linear infinite;
 }
 .loader,
 .loader:before {
@@ -18,11 +18,8 @@
   content: "";
   transform: rotate(45deg);
 }
-@keyframes load {
-  from {
-    transform: rotate(0turn);
-  }
+@keyframes spin {
   to {
-    transform: rotate(1turn);
+    transform: rotate(360deg);
   }
 }
