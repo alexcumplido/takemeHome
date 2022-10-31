@@ -16,6 +16,7 @@ export function SearchParams() {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [coat, setCoat] = useState("");
+  const [care, setCare] = useState(false);
   const [pets, setPets] = useState([]);
   const [pagination, setPagination] = useState({});
   let [counterPage, setCounterPage] = useState("");
@@ -45,6 +46,7 @@ export function SearchParams() {
         age: `${age}`,
         gender: `${gender}`,
         coat: `${coat}`,
+        house_trained: `${care}`,
         page: 1,
         limit: 25,
       })
@@ -88,6 +90,7 @@ export function SearchParams() {
         age: `${age}`,
         gender: `${gender}`,
         coat: `${coat}`,
+        house_trained: `${care}`,
         page: counterPage,
         limit: 25,
       })
@@ -148,6 +151,28 @@ export function SearchParams() {
           handleSelect={setCoat}
           arrayForOptions={inputs.coat}
         />
+        <div className="control-wrapper">
+          <label className="control-label" htmlFor="care">
+            {inputs.care}
+          </label>
+          <select
+            className="control-select"
+            disabled={!breeds.length}
+            id={"care"}
+            value={care}
+            onChange={(event) => setCare(event.target.value)}
+            onBlur={(event) => setCare(event.target.value)}
+          >
+            <option value={false}>Any</option>
+            {inputs.care.map(function (element) {
+              return (
+                <option key={element} value={true}>
+                  {element}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         <Button
           disabled={!animal}
           handleOnclick={submit}
