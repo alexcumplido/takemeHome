@@ -4,15 +4,17 @@
   grid-template-rows: 15rem auto;
   font-size: var(--fs-100);
   font-weight: var(--fw-regular);
-  overflow: hidden;
-  border: 2px solid var(--clr-accent-900);
+  border: 1px solid hsla(191, 23%, 77%, 0.9);
   border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem hsla(191, 23%, 77%, 0.9);
+  overflow: hidden;
+  transition: all 0.1s ease-in;
 }
 
+.card:focus-within,
 .card:hover {
-  transform: scale(1.0475);
+  transform: scale(1.04);
 }
-
 .card__link {
   display: block;
   color: var(--clr-accent-500);
