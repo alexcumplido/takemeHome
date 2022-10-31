@@ -5,7 +5,7 @@ import { ButtonSave } from "../buttonSave/ButtonSave.jsx";
 export function Card(params) {
   const { pet } = params;
   const [save, setSave] = useState(false);
-  let hero = "../../images/noImage.svg";
+  let hero = "./noImage.svg";
   if (pet.photos.length) {
     hero = pet.photos[0].full;
   }
