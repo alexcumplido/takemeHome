@@ -7,7 +7,7 @@
 
 .hero__link {
   flex-basis: 100%;
-  padding: 3rem;
+  padding: 2rem;
   color: var(--clr-neutral-200);
   background-color: var(--clr-accent-500);
   transition: all ease-in-out 0.25s;
