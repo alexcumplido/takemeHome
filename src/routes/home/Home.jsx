@@ -18,7 +18,7 @@ export function Home() {
     if (localStorage.getItem("viewedElements")) {
       getLastViewed();
     } else {
-      handleRequest().then(function onFulfillment(response) {});
+      handleRequest();
     }
 
     async function requestAnimals() {
