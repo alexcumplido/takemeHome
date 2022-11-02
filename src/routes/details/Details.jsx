@@ -8,93 +8,86 @@ import { Carousel } from "../../components/carousel/Carousel.jsx";
 import { Modal } from "../../components/modal/Modal.jsx";
 
 export function Details() {
-  let { id, save } = useParams();
-  save = save === "true" ? true : false;
-  const [petDetails, setPetDetails] = useState();
+  let { id } = useParams();
+  const [pet, setPet] = useState();
   const [loading, setLoading] = useState(true);
-  const [isSaved, setISSave] = useState(save);
   const [showModal, setShowModal] = useState(false);
-
-  function requestDetails() {
-    client.animal
-      .show(id)
-      .then(function onFulFillmenzt(responseObject) {
-        setPetDetails(responseObject.data.animal);
-        setLoading(false);
-      })
-      .catch(function onRejection(responseRejection) {
-        console.log(responseRejection);
-      });
-  }
-
-  function updateLastViewed() {
-    let lastViewed = [];
-    if (localStorage.getItem("lastViewed")) {
-      lastViewed = JSON.parse(localStorage.getItem("lastViewed"));
-      if (!lastViewed.includes(id)) lastViewed.unshift(id);
-    } else {
-      lastViewed.push(id);
-    }
-    window.localStorage.setItem("lastViewed", JSON.stringify(lastViewed));
-  }
-
-  function handleClick() {
-    let savePets = [];
-    if (localStorage.getItem("savePets")) {
-      savePets = JSON.parse(localStorage.getItem("savePets"));
-    }
-    let repeated = savePets.find(function (element) {
-      return element.id === petDetails.id;
-    });
-    if (repeated) {
-      savePets = savePets.filter(function (element) {
-        return element.id !== petDetails.id;
-      });
-      setISSave(false);
-    } else {
-      savePets.push(petDetails);
-      setISSave(true);
-    }
-    window.localStorage.setItem("savePets", JSON.stringify(savePets));
-  }
 
   function toggleModal() {
     setShowModal(!showModal);
   }
 
   useEffect(function () {
-    requestDetails();
-    updateLastViewed();
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
+    if (localStorage.getItem("viewedElements")) {
+      const storage = JSON.parse(localStorage.getItem("viewedElements"));
+      const elementExist = storage.find(
+        (element) => Number(element.id) === Number(id)
+      );
+      if (elementExist) {
+        setPet(elementExist);
+        setLoading(false);
+      } else {
+        handleRequest();
+      }
+    } else {
+      handleRequest();
+    }
+
+    async function requestPet() {
+      try {
+        const response = await client.animal.show(id);
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function handleRequest() {
+      let response = await requestPet();
+      setPet(response.data.animal);
+      setLoading(false);
+      let storage = [];
+      if (localStorage.getItem("viewedElements")) {
+        storage = JSON.parse(localStorage.getItem("viewedElements"));
+        let elementExist = storage.find(
+          (element) => Number(element.id) === Number(id)
+        );
+        if (elementExist === undefined) storage.push(response.data.animal);
+      } else {
+        storage.push(response.data.animal);
+      }
+      window.localStorage.setItem("viewedElements", JSON.stringify(storage));
+    }
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps]
 
   return loading ? (
     <Loader />
   ) : (
     <section className="details container-standard">
-      <Carousel photos={petDetails.photos} />
+      <Carousel photos={pet.photos} />
       <article>
-        <ButtonSave save={isSaved} handleClick={handleClick} />
+        <ButtonSave pet={pet} />
         <div className="details__heading">
-          <h2>{petDetails.name}</h2>
+          <h2>{pet.name}</h2>
           <ul className="flex-center">
-            <li>{`${petDetails.type}-`}</li>
-            <li>{`${petDetails.species}·`}</li>
-            <li>{`${petDetails.contact.address.city}·`}</li>
-            <li>{`${petDetails.contact.address.state}`}</li>
+            <li>{`${pet.type}-`}</li>
+            <li>{`${pet.species}·`}</li>
+            <li>{`${pet.contact.address.city}·`}</li>
+            <li>{`${pet.contact.address.state}`}</li>
           </ul>
         </div>
         <div className="details__body">
-          <h3>Meet {petDetails.name}</h3>
+          <h3>Meet {pet.name}</h3>
           <ul className="flex-center">
-            <li>{`${petDetails.age}`}</li>
-            <li>{`·${petDetails.gender}`}</li>
-            <li>{`·${petDetails.size}`}</li>
+            <li>{`${pet.age}`}</li>
+            <li>{`·${pet.gender}`}</li>
+            <li>{`·${pet.size}`}</li>
           </ul>
-          <p className="details__description">{petDetails.description}</p>
+          <p className="details__description">{pet.description}</p>
           <p>
             Character:
-            {petDetails.tags.length ? (
-              petDetails.tags.map(function (tag, index) {
+            {pet.tags.length ? (
+              pet.tags.map(function (tag, index) {
                 while (index < 3) {
                   return <span key={index}> {tag} </span>;
                 }
@@ -103,34 +96,34 @@ export function Details() {
               <span>No tags found</span>
             )}
           </p>
-          <p>Status: {petDetails.status}</p>
+          <p>Status: {pet.status}</p>
         </div>
         <div className="shelter">
           <h4>Shelter adress</h4>
           <ul className="flex-center">
-            <li>{`${petDetails.contact.address.address}·`}</li>
-            <li>{`${petDetails.contact.address.city}·`}</li>
-            <li>{`${petDetails.contact.address.state}·`}</li>
-            <li>{`${petDetails.contact.address.postcode}`}</li>
+            <li>{`${pet.contact.address.address}·`}</li>
+            <li>{`${pet.contact.address.city}·`}</li>
+            <li>{`${pet.contact.address.state}·`}</li>
+            <li>{`${pet.contact.address.postcode}`}</li>
           </ul>
           <ul className="flex-center">
-            <li>{`${petDetails.contact.email}·`}</li>
-            <li>{`${petDetails.contact.phone}`}</li>
+            <li>{`${pet.contact.email}·`}</li>
+            <li>{`${pet.contact.phone}`}</li>
           </ul>
         </div>
         <div className="details__footer">
           <button className="details__cta" onClick={toggleModal}>
             Adopt
-            {petDetails.name}
+            {pet.name}
           </button>
         </div>
       </article>
       {showModal ? (
         <Modal>
           <div>
-            <h1>Would you like to adopt {petDetails.name}?</h1>
+            <h1>Would you like to adopt {pet.name}?</h1>
             <div className="buttons">
-              <a href={petDetails.url}>Yes</a>
+              <a href={pet.url}>Yes</a>
               <button onClick={toggleModal}>No</button>
             </div>
           </div>
