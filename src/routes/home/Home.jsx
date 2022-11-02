@@ -8,55 +8,56 @@ export function Home() {
   const [homeContent, setHomeContent] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  function fetchAnimals() {
-    client.animal
-      .search({
-        type: "Dog",
-        breed: "",
-        size: "",
-        age: "",
-        gender: "",
-        coat: "",
-        house_trained: false,
-        page: 1,
-        limit: 10,
-      })
-      .then(function onFulfillment(responseObject) {
-        setHomeContent([...responseObject.data.animals]);
-        setLoading(false);
-      })
-      .catch(function onRejection(responseObject) {
-        console.log(responseObject);
-      });
+  function getLastViewed() {
+    let storageAnimals = JSON.parse(localStorage.getItem("viewedElements"));
+    setHomeContent([...storageAnimals]);
+    setLoading(false);
   }
 
-  function getLastViewed() {
-    let viewedAnimals = [];
-    let storageAnimals = JSON.parse(localStorage.getItem("lastViewed"));
-    for (let i = 0; i < 8 && storageAnimals[i]; i++) {
-      client.animal
-        .show(storageAnimals[i])
-        .then(function onFulFillmenzt(responseObject) {
-          viewedAnimals.push(responseObject.data.animal);
-          setHomeContent([...viewedAnimals]);
-          setLoading(false);
-        })
-        .catch(function onRejection(responseRejection) {
-          console.log(responseRejection);
-        });
-    }
-  }
   useEffect(function () {
-    if (localStorage.getItem("lastViewed")) {
+    if (localStorage.getItem("viewedElements")) {
       getLastViewed();
     } else {
-      fetchAnimals();
+      handleRequest().then(function onFulfillment(response) {});
+    }
+
+    async function requestAnimals() {
+      try {
+        const response = await client.animal.search({
+          type: "Dog",
+          breed: "",
+          size: "",
+          age: "",
+          gender: "",
+          coat: "",
+          house_trained: false,
+          page: 1,
+          limit: 10,
+        });
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function handleRequest() {
+      const response = await requestAnimals();
+      setHomeContent([...response.data.animals]);
+      setLoading(false);
     }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <main>
       <Hero />
-      {loading ? <Loader /> : <Results pets={homeContent} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2>Last animals viewed</h2>
+          <Results pets={homeContent} />
+        </>
+      )}
     </main>
   );
 }
