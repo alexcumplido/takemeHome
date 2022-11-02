@@ -1,4 +1,40 @@
-export function ButtonSave({ save, handleClick }) {
+import { useState, useEffect } from "react";
+
+export function ButtonSave({ pet }) {
+  const [save, setSave] = useState(false);
+  function handleClick() {
+    let savePets = [];
+    if (localStorage.getItem("savePets")) {
+      savePets = JSON.parse(localStorage.getItem("savePets"));
+    }
+    let repeated = savePets.find(function (element) {
+      return element.id === pet.id;
+    });
+    if (repeated) {
+      savePets = savePets.filter(function (element) {
+        return element.id !== pet.id;
+      });
+      setSave(false);
+    } else {
+      savePets.push(pet);
+      setSave(true);
+    }
+    window.localStorage.setItem("savePets", JSON.stringify(savePets));
+  }
+
+  useEffect(
+    function () {
+      if (localStorage.getItem("savePets")) {
+        let savePets = JSON.parse(localStorage.getItem("savePets"));
+        let repeated = savePets.find(function (element) {
+          return element.id === pet.id;
+        });
+        repeated ? setSave(true) : setSave(false);
+      }
+    },
+    [] //eslint-disable-line react-hooks/exhaustive-deps
+  );
+
   return (
     <button className="card__save" aria-pressed={save} onClick={handleClick}>
       <svg

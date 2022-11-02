@@ -21,7 +21,6 @@ export function SearchParams() {
   const [pagination, setPagination] = useState({});
   let [counterPage, setCounterPage] = useState("");
   const [loading, setLoading] = useState(true);
-  // const [theme, setTheme] = useContext(ThemeContext);
 
   function requestTypes() {
     setLoading(true);

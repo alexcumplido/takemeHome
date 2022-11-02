@@ -15,7 +15,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/details/:id/:save" element={<WrappedDetails />} />
+          <Route path="/details/:id" element={<WrappedDetails />} />
           <Route path="/dashboard" element={<SavedDashboard />} />
           <Route path="/search" element={<SearchParams />} />
           <Route path="/contact" element={<Contact />} />
