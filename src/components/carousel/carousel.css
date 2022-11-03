@@ -1,7 +1,13 @@
 .carousel {
   position: relative;
   display: grid;
-  grid-template-rows: 80vh;
+  grid-template-rows: 50vh;
+}
+
+@media screen and (min-width: 550px) {
+  .carousel {
+    grid-template-rows: 70vh;
+  }
 }
 
 .carousel__active {

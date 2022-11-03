@@ -65,24 +65,29 @@ export function Details() {
   ) : (
     <section className="details container-standard">
       <Carousel photos={pet.photos} />
-      <article>
+      <article className="details__content">
         <ButtonSave pet={pet} />
         <div className="details__heading">
-          <h2>{pet.name}</h2>
+          <h1>{pet.name}</h1>
           <ul className="flex-center">
-            <li>{`${pet.type}-`}</li>
             <li>{`${pet.species}·`}</li>
             <li>{`${pet.contact.address.city}·`}</li>
             <li>{`${pet.contact.address.state}`}</li>
           </ul>
-        </div>
-        <div className="details__body">
-          <h3>Meet {pet.name}</h3>
+          <p>
+            {`${pet.breeds.mixed === true ? "Mix" : ""}: ${
+              pet.breeds.primary ?? ``
+            } ${pet.breeds.secondary ?? ``}`}
+          </p>
           <ul className="flex-center">
             <li>{`${pet.age}`}</li>
-            <li>{`·${pet.gender}`}</li>
-            <li>{`·${pet.size}`}</li>
+            <li>{`· ${pet.gender}`}</li>
+            <li>{`· ${pet.size}`}</li>
           </ul>
+        </div>
+        <div className="details__body">
+          <h2>Meet {pet.name}</h2>
+
           <p className="details__description">{pet.description}</p>
           <p>
             Character:
@@ -96,10 +101,10 @@ export function Details() {
               <span>No tags found</span>
             )}
           </p>
-          <p>Status: {pet.status}</p>
+          <p>Status:{pet.status}</p>
         </div>
         <div className="shelter">
-          <h4>Shelter adress</h4>
+          <h2>Shelter adress</h2>
           <ul className="flex-center">
             <li>{`${pet.contact.address.address}·`}</li>
             <li>{`${pet.contact.address.city}·`}</li>
