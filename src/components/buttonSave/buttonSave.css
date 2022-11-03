@@ -14,6 +14,10 @@
   fill: var(--clr-accent-500);
 }
 
+.card__save[aria-pressed="false"] {
+  border: 2px solid var(--clr-accent-500);
+}
+
 .card__save[aria-pressed="true"] {
   border: 2px solid var(--clr-accent-800);
 }
