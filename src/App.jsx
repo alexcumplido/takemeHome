@@ -7,7 +7,7 @@ import { Home } from "./routes/home/Home.jsx";
 import { SearchParams } from "./routes/search/SearchParams.jsx";
 import { WrappedDetails } from "./routes//details/Details.jsx";
 import { SavedDashboard } from "./routes/saved/SavedDashboard.jsx";
-import { Contact } from "./routes/contact/Contact.jsx";
+import { ContactUs } from "./routes/contact/Contact.jsx";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/details/:id" element={<WrappedDetails />} />
           <Route path="/dashboard" element={<SavedDashboard />} />
           <Route path="/search" element={<SearchParams />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
