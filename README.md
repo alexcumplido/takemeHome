@@ -1,7 +1,7 @@
 # TakemeHome 2022 |
 
 This project is a work in progress as well as the readme itself. During the following weeks I will be mostly completed.
-Currently you can visualize the [deployed project here](https://takemehome-three.vercel.app/).
+Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
 
 **Quality test**
 
