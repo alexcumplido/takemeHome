@@ -11,8 +11,9 @@
 }
 
 .carousel__active {
-  align-self: stretch;
-  justify-self: stretch;
+  justify-self: center;
+  object-position: 0;
+  object-fit: cover;
   border-radius: 2rem;
   max-height: 100%;
   animation-name: toFront;

@@ -32,7 +32,9 @@ export const ContactUs = () => {
         className="form-email container-standard"
       >
         <div className="control-wrapper">
-          <label className="form__label sr-only">Name</label>
+          <label htmlFor="user__name" className="form__label sr-only">
+            Name
+          </label>
           <input
             className="form__input"
             type="text"
@@ -42,7 +44,9 @@ export const ContactUs = () => {
           />
         </div>
         <div className="control-wrapper">
-          <label className="form__label sr-only">Email</label>
+          <label htmlFor="user_email" className="form__label sr-only">
+            Email
+          </label>
           <input
             className="form__input"
             type="email"
@@ -52,7 +56,9 @@ export const ContactUs = () => {
           />
         </div>
         <div className="control-wrapper">
-          <label className="form__label sr-only">Message</label>
+          <label htmlFor="message" className="form__label sr-only">
+            Message
+          </label>
           <textarea
             className="form__input"
             name="message"

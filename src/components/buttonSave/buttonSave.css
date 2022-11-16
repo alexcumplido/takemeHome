@@ -7,6 +7,7 @@
   border-radius: 100%;
   cursor: pointer;
   background-color: hsla(0, 0%, 100%, 0.75);
+  transition: all ease-in 0.05s;
 }
 
 .card__save[aria-pressed="false"] svg {
@@ -23,6 +24,26 @@
 }
 
 .card__save[aria-pressed="true"] svg {
+  stroke: var(--clr-accent-800);
+  fill: var(--clr-accent-800);
+}
+
+@keyframes rotate-in {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card__save:hover {
+  transform: scale(1.15);
+  animation: rotate-in 0.75s;
+  border: 2px solid var(--clr-accent-800);
+}
+
+.card__save:hover svg {
   stroke: var(--clr-accent-800);
   fill: var(--clr-accent-800);
 }
