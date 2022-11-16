@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
-
+import { Modal } from "../../components/modal/Modal.jsx";
+import { useState } from "react";
+import { Button } from "../../components/button/Button.jsx";
 export function Footer() {
+  const [showModal, setShowModal] = useState(false);
+  const [input, setInput] = useState({ value: "" });
+  const handleChange = (event) => setInput({ value: event.target.value });
+  function toggleModal() {
+    setShowModal(!showModal);
+  }
   return (
     <footer className="footer">
       <div className="footer__superior">
@@ -9,7 +17,9 @@ export function Footer() {
             Get the latest on pet adoption and care, sign up and hear from our
             pets.
           </p>
-          <button className="footer__btn">sign up</button>
+          <button onClick={toggleModal} className="footer__btn">
+            sign up
+          </button>
         </section>
         <nav className="footer__nav">
           <ul>
@@ -53,7 +63,34 @@ export function Footer() {
           <i className="fa-brands fa-instagram"></i>
           <i className="fa-brands fa-youtube"></i>
           <i className="fa-brands fa-pinterest-p"></i>
-        </section>
+        </section>{" "}
+        {showModal ? (
+          <Modal>
+            <form className="modal__form">
+              <Button
+                disabled={false}
+                handleOnclick={toggleModal}
+                text={"X"}
+                styleClass={"button-close"}
+              />
+              <p>Receive our monthly news!</p>
+              <label htmlFor={"email"}>
+                {"email"}
+                <input
+                  className={"modal__input"}
+                  type={"email"}
+                  id={"emal"}
+                  name={"email"}
+                  onChange={handleChange}
+                  value={input.value}
+                  placeholder={"example@gmail.com"}
+                  required
+                />
+              </label>
+              <input type="submit" value="Send" className="modal__submit" />
+            </form>
+          </Modal>
+        ) : null}
         <section className="footer__legal">
           <p>
             <span>©2022 takemehome.com</span>
