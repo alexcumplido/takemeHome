@@ -1,8 +1,7 @@
 .search__submit {
   padding: 0.5rem 3rem;
-  align-self: center;
-  border: none;
   border-radius: 0.25rem;
+  border: 1px solid var(--clr-accent-500);
   color: var(--clr-neutral-100);
   background-color: var(--clr-accent-500);
   box-shadow: 0 1px 3px rgba(77, 71, 81, 0.2);
@@ -24,8 +23,8 @@
   width: 8rem;
   font-weight: var(--fw-bold);
   font-size: var(--fs-100);
-  border: none;
   border-radius: 0.25rem;
+  border: 1px solid rgba(77, 71, 81, 0.2);
   box-shadow: 0 1px 3px rgba(77, 71, 81, 0.2);
   cursor: pointer;
 }
