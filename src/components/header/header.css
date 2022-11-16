@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0rem;
+  padding: 1rem 0.5rem;
 }
 
 .logo {
   font-size: var(--fs-400);
-  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-weight: var(--fw-extra-bold);
   text-decoration: none;
   color: var(--clr-accent-500);
 }
