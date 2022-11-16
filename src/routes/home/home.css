@@ -1,0 +1,5 @@
+.home-heading {
+  padding: 0 0.5rem;
+  color: var(--clr-accent-500);
+  font-weight: var(--fw-regular);
+}

@@ -54,7 +54,9 @@ export function Home() {
         <Loader />
       ) : (
         <>
-          <h2>Last animals viewed</h2>
+          <h2 className="home-heading container-standard">
+            Last animals viewed
+          </h2>
           <Results pets={homeContent} />
         </>
       )}
