@@ -15,10 +15,10 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/details/:id" element={<WrappedDetails />} />
-          <Route path="/dashboard" element={<SavedDashboard />} />
-          <Route path="/search" element={<SearchParams />} />
-          <Route path="/contact" element={<ContactUs />} />
+          <Route path="details/:id" element={<WrappedDetails />} />
+          <Route path="dashboard" element={<SavedDashboard />} />
+          <Route path="search" element={<SearchParams />} />
+          <Route path="contact" element={<ContactUs />} />
           <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
