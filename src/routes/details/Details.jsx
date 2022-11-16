@@ -6,12 +6,15 @@ import { Loader } from "../../components/loader/Loader.jsx";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
 import { Carousel } from "../../components/carousel/Carousel.jsx";
 import { Modal } from "../../components/modal/Modal.jsx";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/button/Button.jsx";
 
 export function Details() {
   let { id } = useParams();
   const [pet, setPet] = useState();
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate("");
 
   function toggleModal() {
     setShowModal(!showModal);
@@ -58,7 +61,7 @@ export function Details() {
       }
       window.localStorage.setItem("viewedElements", JSON.stringify(storage));
     }
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps]
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return loading ? (
     <Loader />
@@ -71,8 +74,8 @@ export function Details() {
           <h1>{pet.name}</h1>
           <ul className="flex-center">
             <li>{`${pet.species}·`}</li>
-            <li>{`${pet.contact.address.city}·`}</li>
-            <li>{`${pet.contact.address.state}`}</li>
+            <li>{`${pet.contact.address.city ?? "No data"}·`}</li>
+            <li>{`${pet.contact.address.state ?? "No data"}`}</li>
           </ul>
           <p>
             {`${pet.breeds.mixed === true ? "Mix" : ""}: ${
@@ -80,9 +83,9 @@ export function Details() {
             } ${pet.breeds.secondary ?? ``}`}
           </p>
           <ul className="flex-center">
-            <li>{`${pet.age}`}</li>
-            <li>{`· ${pet.gender}`}</li>
-            <li>{`· ${pet.size}`}</li>
+            <li>{`${pet.age ?? "No data"}`}</li>
+            <li>{`· ${pet.gender ?? "No data"}`}</li>
+            <li>{`· ${pet.size ?? "No data"}`}</li>
           </ul>
         </div>
         <div className="details__body">
@@ -106,14 +109,14 @@ export function Details() {
         <div className="shelter">
           <h2>Shelter adress</h2>
           <ul className="flex-center">
-            <li>{`${pet.contact.address.address}·`}</li>
-            <li>{`${pet.contact.address.city}·`}</li>
-            <li>{`${pet.contact.address.state}·`}</li>
-            <li>{`${pet.contact.address.postcode}`}</li>
+            <li>{`${pet.contact.address.address ?? "No data"}·`}</li>
+            <li>{`${pet.contact.address.city ?? "No data"}·`}</li>
+            <li>{`${pet.contact.address.state ?? "No data"}·`}</li>
+            <li>{`${pet.contact.address.postcode ?? "No data"}`}</li>
           </ul>
           <ul className="flex-center">
-            <li>{`${pet.contact.email}·`}</li>
-            <li>{`${pet.contact.phone}`}</li>
+            <li>{`${pet.contact.email ?? "No data"}·`}</li>
+            <li>{`${pet.contact.phone ?? "No data"}`}</li>
           </ul>
         </div>
         <div className="details__footer">
@@ -125,12 +128,20 @@ export function Details() {
       </article>
       {showModal ? (
         <Modal>
-          <div>
-            <h1>Would you like to adopt {pet.name}?</h1>
-            <div className="buttons">
-              <a href={pet.url}>Yes</a>
-              <button onClick={toggleModal}>No</button>
-            </div>
+          <div className="modal-details">
+            <p>Would you like to adopt {pet.name}?</p>
+            <Button
+              disabled={false}
+              handleOnclick={toggleModal}
+              text={"X"}
+              styleClass={"button-close"}
+            />
+            <button
+              className="button-navigate"
+              onClick={() => navigate("/contact")}
+            >
+              Yes
+            </button>
           </div>
         </Modal>
       ) : null}
