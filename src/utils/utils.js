@@ -38,18 +38,19 @@ export async function fetchAnimals(
   gender,
   coat,
   care,
-  page = 1
+  counterPage = 1
 ) {
+  console.log(animal, breed, size, age, gender, coat, care, counterPage);
   const result = await client.animal
     .search({
-      type: `${animal}`,
-      breed: `${breed}`,
-      size: `${size}`,
-      age: `${age}`,
-      gender: `${gender}`,
-      coat: `${coat}`,
-      house_trained: `${care}`,
-      page: page,
+      type: animal,
+      breed: breed,
+      size: size,
+      age: age,
+      gender: gender,
+      coat: coat,
+      house_trained: care,
+      page: counterPage,
       limit: 25,
     })
     .then(function onFulfillment(responseObject) {

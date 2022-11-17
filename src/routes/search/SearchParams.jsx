@@ -19,7 +19,7 @@ export function SearchParams() {
   const [care, setCare] = useState(false);
   const [pets, setPets] = useState([]);
   const [pagination, setPagination] = useState({});
-  let [counterPage, setCounterPage] = useState("");
+  let [counterPage, setCounterPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   async function handleAnimalRequest() {
