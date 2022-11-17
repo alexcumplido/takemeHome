@@ -18,6 +18,28 @@ export const client = new Client({
   secret: petApi.API_SRC,
 });
 
+export async function requestHomeDogs() {
+  const response = await client.animal
+    .search({
+      type: "Dog",
+      breed: "",
+      size: "",
+      age: "",
+      gender: "",
+      coat: "",
+      house_trained: false,
+      page: 1,
+      limit: 10,
+    })
+    .then(function onFulfillment(responseObject) {
+      return responseObject.data.animals;
+    })
+    .catch(function onRejection(responseObject) {
+      console.log(responseObject);
+    });
+  return response;
+}
+
 export async function fetchTypes() {
   const result = await client.animalData
     .types()
