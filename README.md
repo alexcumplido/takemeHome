@@ -1,23 +1,28 @@
-# TakemeHome 2022 |
+# TakemeHome 2022 | (Project in progress)
 
-This project is a work in progress as well as the readme itself. During the following weeks I will be mostly completed.
-Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
+This project integrates the [Petfinder JS SDK](https://github.com/petfinder-com/petfinder-js-sdk/tree/master/docs#v2-api) allowing users to query and filter animals from a database. The main goal is to implement an agnostic architecture so integration is not limited to petfinder databases but others too. Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
 
 **Quality test**
 
-Soon 🙄
+Initial quality test will be developed in (Codefactor)[https://www.codefactor.io/] and [SonarQube](https://www.sonarqube.org/).
 
 ## Requirements 🎯
 
-Soon too 🙄
+Soon
 
 ## Usage 📝
 
-Guess what 🙄
+Soon too 🙄
 
 ## Components 🧬
 
-The project followed a [Component Driven UI](https://www.componentdriven.org/) development methodology creating components from the bottom up and then combining them into complex ones.
+The project will follow an Atomic Design driven development paired with a Component Driven UI.
+
+[Brad Frost chapter 2](https://atomicdesign.bradfrost.com/chapter-2/)
+
+[Brad Frost blog chapter](https://bradfrost.com/blog/post/atomic-web-design/)
+
+[Component Driven UI](https://www.componentdriven.org/)
 
 The modal component is implemented using [React portals](https://reactjs.org/docs/portals.html). Portals let you render a children into a DOM node outside of the DOM hierarchy from its parent component.
 
@@ -55,7 +60,7 @@ As a build tool I used [Vite](https://vitejs.dev/) because of its fast configura
 
 ## Visuals 👀
 
-🙄
+![Demo view](./src/assets/takemeHome.gif)
 
 ## Roadmap
 
