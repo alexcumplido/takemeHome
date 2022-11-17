@@ -30,6 +30,36 @@ export async function fetchTypes() {
   return result;
 }
 
+export async function fetchAnimals(
+  animal,
+  breed,
+  size,
+  age,
+  gender,
+  coat,
+  care
+) {
+  const result = await client.animal
+    .search({
+      type: `${animal}`,
+      breed: `${breed}`,
+      size: `${size}`,
+      age: `${age}`,
+      gender: `${gender}`,
+      coat: `${coat}`,
+      house_trained: `${care}`,
+      page: 1,
+      limit: 25,
+    })
+    .then(function onFulfillment(responseObject) {
+      return responseObject.data;
+    })
+    .catch(function onRejection(responseObject) {
+      console.log(responseObject);
+    });
+  return result;
+}
+
 export function _map(list, callback) {
   let storage = [];
   try {

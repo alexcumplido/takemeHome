@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { client, inputs, fetchTypes } from "../../utils/utils.js";
+import { client, inputs, fetchTypes, fetchAnimals } from "../../utils/utils.js";
 import { Results } from "../../components/results/Results.jsx";
 import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -22,34 +22,26 @@ export function SearchParams() {
   let [counterPage, setCounterPage] = useState("");
   const [loading, setLoading] = useState(true);
 
-  function requestAnimal() {
+  async function handleAnimalRequest() {
     setLoading(true);
-    client.animal
-      .search({
-        type: `${animal}`,
-        breed: `${breed}`,
-        size: `${size}`,
-        age: `${age}`,
-        gender: `${gender}`,
-        coat: `${coat}`,
-        house_trained: `${care}`,
-        page: 1,
-        limit: 25,
-      })
-      .then(function onFulfillment(responseObject) {
-        setLoading(false);
-        setPets(responseObject.data.animals);
-        setPagination({ ...responseObject.data.pagination });
-        setCounterPage(responseObject.data.pagination.current_page);
-      })
-      .catch(function onRejection(responseObject) {
-        console.log(responseObject);
-      });
+    const response = await fetchAnimals(
+      animal,
+      breed,
+      size,
+      age,
+      gender,
+      coat,
+      care
+    );
+    setLoading(false);
+    setPets(response.animals);
+    setPagination({ ...response.pagination });
+    setCounterPage(response.pagination.current_page);
   }
 
   function submit(event) {
     event.preventDefault();
-    requestAnimal();
+    handleAnimalRequest();
   }
 
   function incrementPage() {
@@ -89,8 +81,8 @@ export function SearchParams() {
   }
 
   useEffect(function () {
-    handleRequest();
-    async function handleRequest() {
+    handleTypesRequest();
+    async function handleTypesRequest() {
       const types = await fetchTypes();
       setLoading(false);
       setAnimals(types);
