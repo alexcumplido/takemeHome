@@ -31,7 +31,8 @@ export function SearchParams() {
       age,
       gender,
       coat,
-      care
+      care,
+      counterPage
     );
     setLoading(false);
     setPets(response.animals);
@@ -47,37 +48,15 @@ export function SearchParams() {
   function incrementPage() {
     if (pagination && pagination.current_page < pagination.total_pages) {
       setCounterPage(counterPage++);
-      paginateRequest();
+      handleAnimalRequest();
     }
   }
 
   function decrementPage() {
     if (pagination && pagination.current_page > 1) {
       setCounterPage(counterPage--);
-      paginateRequest();
+      handleAnimalRequest();
     }
-  }
-
-  function paginateRequest() {
-    setLoading(true);
-    client.animal
-      .search({
-        type: `${animal}`,
-        breed: `${breed}`,
-        size: `${size}`,
-        age: `${age}`,
-        gender: `${gender}`,
-        coat: `${coat}`,
-        house_trained: `${care}`,
-        page: counterPage,
-        limit: 25,
-      })
-      .then(function onFulfillment(responseObject) {
-        setLoading(false);
-        setPets(responseObject.data.animals);
-        setPagination({ ...responseObject.data.pagination });
-        setCounterPage(responseObject.data.pagination.current_page);
-      });
   }
 
   useEffect(function () {
