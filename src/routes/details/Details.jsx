@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { client } from "../../utils/utils.js";
+import { requestPet } from "../../utils/utils.js";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
@@ -36,18 +36,9 @@ export function Details() {
       handleRequest();
     }
 
-    async function requestPet() {
-      try {
-        const response = await client.animal.show(id);
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     async function handleRequest() {
-      let response = await requestPet();
-      setPet(response.data.animal);
+      let response = await requestPet(id);
+      setPet(response);
       setLoading(false);
       let storage = [];
       if (localStorage.getItem("viewedElements")) {
@@ -55,9 +46,9 @@ export function Details() {
         let elementExist = storage.find(
           (element) => Number(element.id) === Number(id)
         );
-        if (elementExist === undefined) storage.push(response.data.animal);
+        if (elementExist === undefined) storage.push(response);
       } else {
-        storage.push(response.data.animal);
+        storage.push(response);
       }
       window.localStorage.setItem("viewedElements", JSON.stringify(storage));
     }

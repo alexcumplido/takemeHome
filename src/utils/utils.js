@@ -84,6 +84,18 @@ export async function fetchAnimals(
   return result;
 }
 
+export async function requestPet(id) {
+  const response = await client.animal
+    .show(id)
+    .then(function onFulfillment(responseObject) {
+      return responseObject.data.animal;
+    })
+    .catch(function onRejection(responseObject) {
+      console.log(responseObject);
+    });
+  return response;
+}
+
 export function _map(list, callback) {
   let storage = [];
   try {
