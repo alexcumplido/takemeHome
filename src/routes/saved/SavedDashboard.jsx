@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results.jsx";
-import { client } from "../../utils/utils.js";
 import { Button } from "../../components/button/Button.jsx";
+import { fetchTypes } from "../../utils/utils.js";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
@@ -9,17 +9,6 @@ export function SavedDashboard() {
 
   function requestStorage() {
     return JSON.parse(localStorage.getItem("savePets"));
-  }
-
-  function requestTypes() {
-    client.animalData
-      .types()
-      .then(function onFulfillment(responseObject) {
-        setAnimals(responseObject.data.types);
-      })
-      .catch(function onRejection(responseObject) {
-        console.log(responseObject);
-      });
   }
 
   function clearDashboard() {
@@ -50,7 +39,11 @@ export function SavedDashboard() {
 
   useEffect(function () {
     setDashboard(requestStorage());
-    requestTypes();
+    handleTypesRequest();
+    async function handleTypesRequest() {
+      const types = await fetchTypes();
+      setAnimals(types);
+    }
   }, []);
 
   function handleDays() {

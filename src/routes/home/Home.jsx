@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { client } from "../../utils/utils.js";
+import { requestHomeDogs } from "../../utils/utils.js";
 import { Results } from "../../components/results/Results.jsx";
 import { Hero } from "../../components/hero/Hero.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -20,29 +20,9 @@ export function Home() {
     } else {
       handleRequest();
     }
-
-    async function requestAnimals() {
-      try {
-        const response = await client.animal.search({
-          type: "Dog",
-          breed: "",
-          size: "",
-          age: "",
-          gender: "",
-          coat: "",
-          house_trained: false,
-          page: 1,
-          limit: 10,
-        });
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     async function handleRequest() {
-      const response = await requestAnimals();
-      setHomeContent([...response.data.animals]);
+      const response = await requestHomeDogs();
+      setHomeContent([...response]);
       setLoading(false);
     }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
