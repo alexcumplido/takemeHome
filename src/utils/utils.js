@@ -17,6 +17,50 @@ export const client = new Client({
   apiKey: petApi.API_KEY,
   secret: petApi.API_SRC,
 });
+
+export async function fetchTypes() {
+  const result = await client.animalData
+    .types()
+    .then(function onFulfillment(responseObject) {
+      return responseObject.data.types;
+    })
+    .catch(function onRejection(responseObject) {
+      console.log(responseObject);
+    });
+  return result;
+}
+
+export async function fetchAnimals(
+  animal,
+  breed,
+  size,
+  age,
+  gender,
+  coat,
+  care,
+  page = 1
+) {
+  const result = await client.animal
+    .search({
+      type: `${animal}`,
+      breed: `${breed}`,
+      size: `${size}`,
+      age: `${age}`,
+      gender: `${gender}`,
+      coat: `${coat}`,
+      house_trained: `${care}`,
+      page: page,
+      limit: 25,
+    })
+    .then(function onFulfillment(responseObject) {
+      return responseObject.data;
+    })
+    .catch(function onRejection(responseObject) {
+      console.log(responseObject);
+    });
+  return result;
+}
+
 export function _map(list, callback) {
   let storage = [];
   try {
