@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { client, inputs } from "../../utils/utils.js";
+import { useState, useEffect } from "react";
+import { client, inputs, fetchTypes } from "../../utils/utils.js";
 import { Results } from "../../components/results/Results.jsx";
 import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -21,19 +21,6 @@ export function SearchParams() {
   const [pagination, setPagination] = useState({});
   let [counterPage, setCounterPage] = useState("");
   const [loading, setLoading] = useState(true);
-
-  function requestTypes() {
-    setLoading(true);
-    client.animalData
-      .types()
-      .then(function onFulfillment(responseObject) {
-        setLoading(false);
-        setAnimals(responseObject.data.types);
-      })
-      .catch(function onRejection(responseObject) {
-        console.log(responseObject);
-      });
-  }
 
   function requestAnimal() {
     setLoading(true);
@@ -102,7 +89,12 @@ export function SearchParams() {
   }
 
   useEffect(function () {
-    requestTypes();
+    handleRequest();
+    async function handleRequest() {
+      const types = await fetchTypes();
+      setLoading(false);
+      setAnimals(types);
+    }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
