@@ -4,7 +4,7 @@ import { Results } from "../../components/results/Results.jsx";
 import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { Select } from "../../components/select/Select.jsx";
-import { SelectAnimal } from "../../components/selectAnimal/selectAnimal.jsx";
+import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.jsx";
 import { Button } from "../../components/button/Button.jsx";
 
 export function SearchParams() {
