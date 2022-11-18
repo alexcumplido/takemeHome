@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { client, inputs, fetchTypes, fetchAnimals } from "../../utils/utils.js";
+import { inputs } from "../../utils/utils.js";
+import { fetchTypes, fetchAnimals } from "../../utils/services.js";
 import { Results } from "../../components/results/Results.jsx";
 import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";

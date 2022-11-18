@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  requestPet,
-  existKeyStorage,
-  retrieveKeyStorage,
-} from "../../utils/utils.js";
+import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
@@ -25,35 +21,11 @@ export function Details() {
   }
 
   useEffect(function () {
-    if (existKeyStorage("viewedElements")) {
-      const elementExist = retrieveKeyStorage("viewedElements").find(
-        (element) => Number(element.id) === Number(id)
-      );
-      if (elementExist) {
-        setPet(elementExist);
-        setLoading(false);
-      } else {
-        handleRequest();
-      }
-    } else {
-      handleRequest();
-    }
-
+    handleRequest();
     async function handleRequest() {
       let response = await requestPet(id);
       setPet(response);
       setLoading(false);
-      let storage = [];
-      if (existKeyStorage("viewedElements")) {
-        storage = retrieveKeyStorage("viewedElements");
-        let elementExist = storage.find(
-          (element) => Number(element.id) === Number(id)
-        );
-        if (elementExist === undefined) storage.push(response);
-      } else {
-        storage.push(response);
-      }
-      window.localStorage.setItem("viewedElements", JSON.stringify(storage));
     }
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
@@ -68,18 +40,18 @@ export function Details() {
           <h1>{pet.name}</h1>
           <ul className="flex-center">
             <li>{`${pet.species}·`}</li>
-            <li>{`${pet.contact.address.city ?? "No data"}·`}</li>
-            <li>{`${pet.contact.address.state ?? "No data"}`}</li>
+            <li>{`${pet.city}·`}</li>
+            <li>{`${pet.state}`}</li>
           </ul>
           <p>
-            {`${pet.breeds.mixed === true ? "Mix" : ""}: ${
-              pet.breeds.primary ?? ``
-            } ${pet.breeds.secondary ?? ``}`}
+            {`${pet.mixed === "No data" ? "" : "Mix"}: ${pet.breedPrimary} ${
+              pet.breedSecondary
+            }`}
           </p>
           <ul className="flex-center">
-            <li>{`${pet.age ?? "No data"}`}</li>
-            <li>{`· ${pet.gender ?? "No data"}`}</li>
-            <li>{`· ${pet.size ?? "No data"}`}</li>
+            <li>{`${pet.age}`}</li>
+            <li>{`· ${pet.gender}`}</li>
+            <li>{`· ${pet.size}`}</li>
           </ul>
         </div>
         <div className="details__body">
@@ -103,14 +75,14 @@ export function Details() {
         <div className="shelter">
           <h2>Shelter adress</h2>
           <ul className="flex-center">
-            <li>{`${pet.contact.address.address ?? "No data"}·`}</li>
-            <li>{`${pet.contact.address.city ?? "No data"}·`}</li>
-            <li>{`${pet.contact.address.state ?? "No data"}·`}</li>
-            <li>{`${pet.contact.address.postcode ?? "No data"}`}</li>
+            <li>{`${pet.address}·`}</li>
+            <li>{`${pet.city}·`}</li>
+            <li>{`${pet.state}·`}</li>
+            <li>{`${pet.postcode}`}</li>
           </ul>
           <ul className="flex-center">
-            <li>{`${pet.contact.email ?? "No data"}·`}</li>
-            <li>{`${pet.contact.phone ?? "No data"}`}</li>
+            <li>{`${pet.email}·`}</li>
+            <li>{`${pet.phone}`}</li>
           </ul>
         </div>
         <div className="details__footer">
@@ -123,7 +95,7 @@ export function Details() {
       {showModal ? (
         <Modal>
           <div className="modal-details">
-            <p>Would you like to adopt {pet.name}?</p>
+            <p>Would you like to adopt {pet.name}</p>
             <Button
               disabled={false}
               handleOnclick={toggleModal}

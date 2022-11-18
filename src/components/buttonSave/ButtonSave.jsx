@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { retrieveKeyStorage, existKeyStorage } from "../../utils/utils.js";
 
 export function ButtonSave({ pet }) {
   const [save, setSave] = useState(false);
   function handleClick() {
     let savePets = [];
-    if (localStorage.getItem("savePets")) {
-      savePets = JSON.parse(localStorage.getItem("savePets"));
+    if (existKeyStorage("savePets")) {
+      savePets = retrieveKeyStorage("savePets");
     }
     let repeated = savePets.find(function (element) {
       return element.id === pet.id;
@@ -24,9 +25,8 @@ export function ButtonSave({ pet }) {
 
   useEffect(
     function () {
-      if (localStorage.getItem("savePets")) {
-        let savePets = JSON.parse(localStorage.getItem("savePets"));
-        let repeated = savePets.find(function (element) {
+      if (existKeyStorage("savePets")) {
+        let repeated = retrieveKeyStorage("savePets").find(function (element) {
           return element.id === pet.id;
         });
         repeated ? setSave(true) : setSave(false);

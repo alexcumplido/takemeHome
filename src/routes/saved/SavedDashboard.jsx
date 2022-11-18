@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results.jsx";
 import { Button } from "../../components/button/Button.jsx";
-import { fetchTypes, retrieveKeyStorage } from "../../utils/utils.js";
+import { retrieveKeyStorage } from "../../utils/utils.js";
+import { fetchTypes } from "../../utils/services.js";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
@@ -17,7 +18,7 @@ export function SavedDashboard() {
       return retrieveKeyStorage("savePets");
     }
     let filtered = retrieveKeyStorage("savePets").filter(function (element) {
-      return element.type === typeAnimal;
+      return element.species === typeAnimal;
     });
     return filtered;
   }
@@ -25,11 +26,19 @@ export function SavedDashboard() {
   function sortOldestWaiting() {
     let sorted = [...dashboard].sort(function (a, b) {
       return (
-        Number(new Date(a.status_changed_at).getTime()) -
-        Number(new Date(b.status_changed_at).getTime())
+        Number(new Date(a.lastDate).getTime()) -
+        Number(new Date(b.lastDate).getTime())
       );
     });
     return sorted;
+  }
+
+  function handleDays() {
+    setDashboard(sortOldestWaiting());
+  }
+
+  function handleUpdate() {
+    setDashboard(retrieveKeyStorage("savePets"));
   }
 
   useEffect(function () {
@@ -40,14 +49,6 @@ export function SavedDashboard() {
       setAnimals(types);
     }
   }, []);
-
-  function handleDays() {
-    setDashboard(sortOldestWaiting());
-  }
-
-  function handleUpdate() {
-    setDashboard(retrieveKeyStorage("savePets"));
-  }
   return (
     <main>
       <section className="saved container-standard">

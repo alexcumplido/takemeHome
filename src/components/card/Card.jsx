@@ -33,9 +33,7 @@ export function Card({ pet }) {
         <Link to={`/details/${pet.id}`} className="card__link">
           <p className="card__name">{pet.name}</p>
         </Link>
-        <p>
-          {`${pet.age} · ${pet.contact.address.city} · ${pet.contact.address.state}`}
-        </p>
+        <p>{`${pet.age} · ${pet.city} · ${pet.state}`}</p>
       </div>
     </article>
   );

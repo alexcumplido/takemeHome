@@ -1,5 +1,5 @@
 import { useState, useEffect, useDebugValue } from "react";
-import { client } from "./utils.js";
+import { client } from "./services.js";
 
 const localCache = {};
 
