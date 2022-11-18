@@ -1,27 +1,22 @@
 import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results.jsx";
 import { Button } from "../../components/button/Button.jsx";
-import { fetchTypes } from "../../utils/utils.js";
+import { fetchTypes, retrieveKeyStorage } from "../../utils/utils.js";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
   const [animals, setAnimals] = useState("");
 
-  function requestStorage() {
-    return JSON.parse(localStorage.getItem("savePets"));
-  }
-
   function clearDashboard() {
     localStorage.clear();
-    setDashboard(requestStorage());
+    setDashboard(retrieveKeyStorage("savePets"));
   }
 
   function filterType(typeAnimal) {
     if (typeAnimal === "") {
-      return requestStorage();
+      return retrieveKeyStorage("savePets");
     }
-
-    let filtered = requestStorage().filter(function (element) {
+    let filtered = retrieveKeyStorage("savePets").filter(function (element) {
       return element.type === typeAnimal;
     });
     return filtered;
@@ -38,7 +33,7 @@ export function SavedDashboard() {
   }
 
   useEffect(function () {
-    setDashboard(requestStorage());
+    setDashboard(retrieveKeyStorage("savePets"));
     handleTypesRequest();
     async function handleTypesRequest() {
       const types = await fetchTypes();
@@ -51,7 +46,7 @@ export function SavedDashboard() {
   }
 
   function handleUpdate() {
-    setDashboard(requestStorage());
+    setDashboard(retrieveKeyStorage("savePets"));
   }
   return (
     <main>

@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { requestPet } from "../../utils/utils.js";
+import {
+  requestPet,
+  existKeyStorage,
+  retrieveKeyStorage,
+} from "../../utils/utils.js";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
@@ -21,9 +25,8 @@ export function Details() {
   }
 
   useEffect(function () {
-    if (localStorage.getItem("viewedElements")) {
-      const storage = JSON.parse(localStorage.getItem("viewedElements"));
-      const elementExist = storage.find(
+    if (existKeyStorage("viewedElements")) {
+      const elementExist = retrieveKeyStorage("viewedElements").find(
         (element) => Number(element.id) === Number(id)
       );
       if (elementExist) {
@@ -41,8 +44,8 @@ export function Details() {
       setPet(response);
       setLoading(false);
       let storage = [];
-      if (localStorage.getItem("viewedElements")) {
-        storage = JSON.parse(localStorage.getItem("viewedElements"));
+      if (existKeyStorage("viewedElements")) {
+        storage = retrieveKeyStorage("viewedElements");
         let elementExist = storage.find(
           (element) => Number(element.id) === Number(id)
         );
