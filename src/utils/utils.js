@@ -88,6 +88,8 @@ export async function fetchAnimals(
       limit: 25,
     })
     .then(function onFulfillment(responseObject) {
+      console.log(responseObject);
+
       return responseObject.data;
     })
     .catch(function onRejection(responseObject) {
@@ -96,11 +98,37 @@ export async function fetchAnimals(
   return result;
 }
 
+function cleanResponsePet(responseObject) {
+  let element = responseObject.data.animal;
+  let noData = "No data";
+  return {
+    id: element.id ?? noData,
+    description: element.description ?? noData,
+    photos: element.photos ?? noData,
+    name: element.name ?? noData,
+    species: element.species ?? noData,
+    breedPrimary: element.breeds.primary ?? noData,
+    breedSecondary: element.breeds.secondary ?? noData,
+    mixed: element.breeds.mixed ?? noData,
+    city: element.contact.address.city ?? noData,
+    adress: element.contact.address.adress1 ?? noData,
+    state: element.contact.address.state ?? noData,
+    postcode: element.contact.address.postcode ?? noData,
+    email: element.contact.email ?? noData,
+    phone: element.contact.phone ?? noData,
+    age: element.age ?? noData,
+    gender: element.gender ?? noData,
+    size: element.size ?? noData,
+    tags: element.tags ?? noData,
+    status: element.status ?? noData,
+  };
+}
+
 export async function requestPet(id) {
   const response = await client.animal
     .show(id)
     .then(function onFulfillment(responseObject) {
-      return responseObject.data.animal;
+      return cleanResponsePet(responseObject);
     })
     .catch(function onRejection(responseObject) {
       console.log(responseObject);
