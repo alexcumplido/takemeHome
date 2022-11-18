@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { requestPet } from "../../utils/utils.js";
+import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
@@ -24,7 +24,6 @@ export function Details() {
     handleRequest();
     async function handleRequest() {
       let response = await requestPet(id);
-      console.log();
       setPet(response);
       setLoading(false);
     }
