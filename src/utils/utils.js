@@ -20,7 +20,6 @@ export function retrieveKeyStorage(key) {
 
 export function cleanObject(element) {
   let noData = "No data";
-  console.log(element);
   return {
     id: element.id ?? noData,
     description: element.description ?? noData,
