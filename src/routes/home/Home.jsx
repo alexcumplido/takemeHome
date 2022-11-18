@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { requestHomeDogs } from "../../utils/utils.js";
+import { requestHomeDogs } from "../../utils/services";
 import { Results } from "../../components/results/Results.jsx";
 import { Hero } from "../../components/hero/Hero.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
