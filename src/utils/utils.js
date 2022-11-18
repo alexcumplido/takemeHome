@@ -18,6 +18,18 @@ export const client = new Client({
   secret: petApi.API_SRC,
 });
 
+export function existKeyStorage(key) {
+  let exist = false;
+  if (localStorage.getItem(key)) {
+    exist = true;
+  }
+  return exist;
+}
+
+export function retrieveKeyStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
 export async function requestHomeDogs() {
   const response = await client.animal
     .search({

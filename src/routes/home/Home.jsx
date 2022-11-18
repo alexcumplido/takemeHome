@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { requestHomeDogs } from "../../utils/utils.js";
+import {
+  requestHomeDogs,
+  retrieveKeyStorage,
+  existKeyStorage,
+} from "../../utils/utils.js";
 import { Results } from "../../components/results/Results.jsx";
 import { Hero } from "../../components/hero/Hero.jsx";
 import { Loader } from "../../components/loader/Loader.jsx";
@@ -9,13 +13,12 @@ export function Home() {
   const [loading, setLoading] = useState(true);
 
   function getLastViewed() {
-    let storageAnimals = JSON.parse(localStorage.getItem("viewedElements"));
-    setHomeContent([...storageAnimals]);
+    setHomeContent([...retrieveKeyStorage("viewedElements")]);
     setLoading(false);
   }
 
   useEffect(function () {
-    if (localStorage.getItem("viewedElements")) {
+    if (existKeyStorage("viewedElements")) {
       getLastViewed();
     } else {
       handleRequest();
