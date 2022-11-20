@@ -41,7 +41,6 @@ export function Details() {
           <h1>{pet.name}</h1>
           <List items={[pet.species, pet.city, pet.state]} />
           <List items={[pet.breedPrimary, pet.breedSecondary]} />
-          <List items={[pet.mixed, pet.breedPrimary, pet.state]} />
           <p>
             {`
             ${pet.mixed === "No data" ? "" : "Mixed"}
