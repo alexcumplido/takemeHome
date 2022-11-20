@@ -23,7 +23,7 @@ export function cleanObject(element) {
   return {
     id: element.id ?? noData,
     description: element.description ?? noData,
-    photos: element.photos ?? noData,
+    photos: element.photos ?? [],
     name: element.name ?? noData,
     species: element.species ?? noData,
     breedPrimary: element.breeds.primary ?? noData,
