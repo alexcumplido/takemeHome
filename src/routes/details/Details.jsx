@@ -8,7 +8,7 @@ import { Carousel } from "../../components/carousel/Carousel.jsx";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
-import { List } from "../../components/list/List.jsx";
+import { List } from "../../components/list/List";
 
 export function Details() {
   let { id } = useParams();
