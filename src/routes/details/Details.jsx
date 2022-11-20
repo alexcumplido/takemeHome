@@ -7,7 +7,7 @@ import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
 import { Carousel } from "../../components/carousel/Carousel.jsx";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../components/button/Button.jsx";
+import { Button } from "../../components/button/Button";
 import { List } from "../../components/list/List.jsx";
 
 export function Details() {
@@ -65,9 +65,9 @@ export function Details() {
         <div className="details__footer">
           <Button
             disabled={false}
-            handleOnclick={toggleModal}
+            onClick={toggleModal}
             text={`Adopt ${pet.name}`}
-            styleClass="details__cta"
+            className="details__cta"
           />
         </div>
       </article>
@@ -77,9 +77,9 @@ export function Details() {
             <p>Would you like to adopt {pet.name}</p>
             <Button
               disabled={false}
-              handleOnclick={toggleModal}
+              onClick={toggleModal}
               text={"X"}
-              styleClass={"button-close"}
+              className={"button-close"}
             />
             <button
               className="button-navigate"

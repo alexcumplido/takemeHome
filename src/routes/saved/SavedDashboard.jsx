@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results.jsx";
-import { Button } from "../../components/button/Button.jsx";
+import { Button } from "../../components/button/Button";
 import { retrieveKeyStorage } from "../../utils/utils.js";
 import { fetchTypes } from "../../utils/services.js";
 
@@ -82,19 +82,19 @@ export function SavedDashboard() {
             disabled={!dashboard}
             handleOnclick={handleDays}
             text={"Most days waiting"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
             handleOnclick={handleUpdate}
             text={"Update"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
             handleOnclick={clearDashboard}
             text={"Remove all"}
-            styleClass="saved__button saved__button-clear"
+            className="saved__button saved__button-clear"
           />
         </form>
         <Results pets={dashboard} />

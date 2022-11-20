@@ -6,7 +6,7 @@ import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { Select } from "../../components/select/Select.jsx";
 import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.jsx";
-import { Button } from "../../components/button/Button.jsx";
+import { Button } from "../../components/button/Button";
 
 export function SearchParams() {
   const [animals, setAnimals] = useState("");
@@ -138,24 +138,24 @@ export function SearchParams() {
         </div>
         <Button
           disabled={!animal}
-          handleOnclick={submit}
+          onClick={submit}
           text={"search"}
-          styleClass="search__submit"
+          className="search__submit"
         />
       </form>
       {loading ? <Loader /> : <Results pets={pets} />}
       <div className="pagination-wrapper flex-center">
         <Button
           disabled={!counterPage}
-          handleOnclick={decrementPage}
+          onClick={decrementPage}
           text={"Previous"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
         <Button
           disabled={!counterPage}
-          handleOnclick={incrementPage}
+          onClick={incrementPage}
           text={"Next"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
       </div>
     </section>
