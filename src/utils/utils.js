@@ -38,7 +38,7 @@ export function cleanObject(element) {
     age: element.age ?? noData,
     gender: element.gender ?? noData,
     size: element.size ?? noData,
-    tags: element.tags ?? noData,
+    tags: element.tags.length === 0 && noData,
     status: element.status ?? noData,
     lastDate: element.status_changed_at ?? noData,
   };
