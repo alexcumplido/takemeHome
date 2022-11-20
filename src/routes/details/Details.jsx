@@ -8,6 +8,7 @@ import { Carousel } from "../../components/carousel/Carousel.jsx";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button.jsx";
+import { List } from "../../components/list/List.jsx";
 
 export function Details() {
   let { id } = useParams();
@@ -38,58 +39,36 @@ export function Details() {
         <ButtonSave pet={pet} />
         <div className="details__heading">
           <h1>{pet.name}</h1>
-          <ul className="flex-center">
-            <li>{`${pet.species}·`}</li>
-            <li>{`${pet.city}·`}</li>
-            <li>{`${pet.state}`}</li>
-          </ul>
+          <List items={[pet.species, pet.city, pet.state]} />
+          <List items={[pet.breedPrimary, pet.breedSecondary]} />
           <p>
-            {`${pet.mixed === "No data" ? "" : "Mix"}: ${pet.breedPrimary} ${
-              pet.breedSecondary
-            }`}
+            {`
+            ${pet.mixed === "No data" ? "" : "Mixed"}
+            ${pet.breedPrimary === "No data" ? "" : pet.breedPrimary}
+            ${pet.breedSecondary === "No data" ? "" : pet.breedSecondary}
+            `}
           </p>
-          <ul className="flex-center">
-            <li>{`${pet.age}`}</li>
-            <li>{`· ${pet.gender}`}</li>
-            <li>{`· ${pet.size}`}</li>
-          </ul>
+          <List items={[pet.age, pet.gender, pet.size]} />
         </div>
         <div className="details__body">
           <h2>Meet {pet.name}</h2>
-
           <p className="details__description">{pet.description}</p>
-          <p>
-            Character:
-            {pet.tags.length ? (
-              pet.tags.map(function (tag, index) {
-                while (index < 3) {
-                  return <span key={index}> {tag} </span>;
-                }
-              })
-            ) : (
-              <span>No tags found</span>
-            )}
-          </p>
+          <p>Character:</p>
+          <List items={[...pet.tags]} />
           <p>Status:{pet.status}</p>
         </div>
         <div className="shelter">
           <h2>Shelter adress</h2>
-          <ul className="flex-center">
-            <li>{`${pet.address}·`}</li>
-            <li>{`${pet.city}·`}</li>
-            <li>{`${pet.state}·`}</li>
-            <li>{`${pet.postcode}`}</li>
-          </ul>
-          <ul className="flex-center">
-            <li>{`${pet.email}·`}</li>
-            <li>{`${pet.phone}`}</li>
-          </ul>
+          <List items={[pet.adress, pet.city, pet.state, pet.postcode]} />
+          <List items={[pet.email, pet.phone]} />
         </div>
         <div className="details__footer">
-          <button className="details__cta" onClick={toggleModal}>
-            Adopt
-            {pet.name}
-          </button>
+          <Button
+            disabled={false}
+            handleOnclick={toggleModal}
+            text={`Adopt ${pet.name}`}
+            styleClass="details__cta"
+          />
         </div>
       </article>
       {showModal ? (
