@@ -60,14 +60,14 @@ export function Details() {
           <p className="details__description">{pet.description}</p>
           <p>
             Character:
-            {pet.tags.length ? (
+            {typeof pet.tags === "string" ? (
+              <span>{pet.tags}</span>
+            ) : (
               pet.tags.map(function (tag, index) {
                 while (index < 3) {
                   return <span key={index}> {tag} </span>;
                 }
               })
-            ) : (
-              <span>No tags found</span>
             )}
           </p>
           <p>Status:{pet.status}</p>
@@ -75,7 +75,7 @@ export function Details() {
         <div className="shelter">
           <h2>Shelter adress</h2>
           <ul className="flex-center">
-            <li>{`${pet.address}·`}</li>
+            <li>{`${pet.adress}·`}</li>
             <li>{`${pet.city}·`}</li>
             <li>{`${pet.state}·`}</li>
             <li>{`${pet.postcode}`}</li>
