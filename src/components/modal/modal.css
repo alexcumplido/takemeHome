@@ -1,5 +1,4 @@
 .modal {
-  background-color: rgba(0, 0, 0, 0.85);
   position: fixed;
   left: 0;
   right: 0;
@@ -8,6 +7,7 @@
   z-index: 1;
   display: grid;
   place-items: center;
+  backdrop-filter: blur(0.15rem);
 }
 
 .modal:empty {
@@ -21,6 +21,7 @@
   border-radius: 0.5rem;
   background-color: var(--clr-neutral-100);
   animation: toFront 0.45s ease-out both;
+  border: 1px solid var(--clr-neutral-500);
 }
 
 .modal-details {
