@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
+import { Loader } from "../../components/loader/Loader";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
 import { Carousel } from "../../components/carousel/Carousel";
 import { Modal } from "../../components/modal/Modal.jsx";

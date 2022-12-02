@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ButtonSave } from "../buttonSave/ButtonSave.jsx";
+import { ButtonSave } from "../buttonSave/ButtonSave";
 
 export function Card({ pet }) {
   return (

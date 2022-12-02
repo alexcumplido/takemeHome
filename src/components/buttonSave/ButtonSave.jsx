@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { retrieveKeyStorage, existKeyStorage } from "../../utils/utils.js";
+import { retrieveKeyStorage, existKeyStorage } from "../../utils/utils";
 
 export function ButtonSave({ pet }) {
   const [save, setSave] = useState(false);

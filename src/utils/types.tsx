@@ -8,6 +8,7 @@ export type TypePet = {
     description: string,
     photos: photo [] | [],
     name: string
+    type: string,
     species:  string,
     breedPrimary: string,
     breedSecondary: string,

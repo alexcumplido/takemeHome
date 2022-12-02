@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results";
 import { Button } from "../../components/button/Button";
-import { retrieveKeyStorage } from "../../utils/utils.js";
+import { retrieveKeyStorage } from "../../utils/utils";
 import { fetchTypes } from "../../utils/services.js";
+import { Select } from "../../components/select/Select";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
@@ -18,7 +19,7 @@ export function SavedDashboard() {
       return retrieveKeyStorage("savePets");
     }
     let filtered = retrieveKeyStorage("savePets").filter(function (element) {
-      return element.species === typeAnimal;
+      return element.type === typeAnimal;
     });
     return filtered;
   }
@@ -41,6 +42,10 @@ export function SavedDashboard() {
     setDashboard(retrieveKeyStorage("savePets"));
   }
 
+  function handleSelect(value) {
+    setDashboard(filterType(value));
+  }
+
   useEffect(function () {
     setDashboard(retrieveKeyStorage("savePets"));
     handleTypesRequest();
@@ -58,41 +63,27 @@ export function SavedDashboard() {
             event.preventDefault();
           }}
         >
-          <div className="control-wrapper">
-            <label className="control-label" htmlFor="animal">
-              Animal type
-            </label>
-            <select
-              className="control-select"
-              disabled={!dashboard}
-              id="animal"
-              onChange={(event) => setDashboard(filterType(event.target.value))}
-              onBlur={(event) => setDashboard(filterType(event.target.value))}
-            >
-              <option value="">Any</option>
-              {animals &&
-                animals.map((element) => (
-                  <option key={element.name} value={element.name}>
-                    {element.name}
-                  </option>
-                ))}
-            </select>
-          </div>
+          <Select
+            text={"animal"}
+            disabled={!dashboard}
+            onChange={handleSelect}
+            options={animals}
+          />
           <Button
             disabled={!dashboard}
-            handleOnclick={handleDays}
+            onClick={handleDays}
             text={"Most days waiting"}
             className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={handleUpdate}
+            onClick={handleUpdate}
             text={"Update"}
             className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={clearDashboard}
+            onClick={clearDashboard}
             text={"Remove all"}
             className="saved__button saved__button-clear"
           />

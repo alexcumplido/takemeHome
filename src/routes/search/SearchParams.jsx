@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { inputs } from "../../utils/utils.js";
-import { fetchTypes, fetchAnimals } from "../../utils/services.js";
+import { fetchTypes, fetchAnimals, inputs } from "../../utils/services.js";
 import { Results } from "../../components/results/Results";
 import { useBreedList } from "../../utils/useBreedList.js";
-import { Loader } from "../../components/loader/Loader.jsx";
-import { Select } from "../../components/select/Select.jsx";
-import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.jsx";
+import { Select } from "../../components/select/Select";
+import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal";
 import { Button } from "../../components/button/Button";
+import { Loader } from "../../components/loader/Loader";
 
 export function SearchParams() {
   const [animals, setAnimals] = useState("");
@@ -73,46 +72,46 @@ export function SearchParams() {
     <section className="search container-standard">
       <form className="form">
         <SelectAnimal
-          textAttribute={"animal"}
+          text={"animal"}
           value={animal}
-          handleSelect={setAnimal}
-          extraHandleSelect={setBreed}
-          arrayForOptions={animals}
+          onChange={setAnimal}
+          extraOnChange={setBreed}
+          options={animals}
         />
         <Select
-          textAttribute={"breed"}
-          isDisabled={!breeds.length}
+          text={"breed"}
+          disabled={!breeds.length}
           value={breed}
-          handleSelect={setBreed}
-          arrayForOptions={breeds}
+          onChange={setBreed}
+          options={breeds}
         />
         <Select
-          textAttribute={"size"}
-          isDisabled={!breeds.length}
+          text={"size"}
+          disabled={!breeds.length}
           value={size}
-          handleSelect={setSize}
-          arrayForOptions={inputs.size}
+          onChange={setSize}
+          options={inputs.size}
         />
         <Select
-          textAttribute={"age"}
-          isDisabled={!breeds.length}
+          text={"age"}
+          disabled={!breeds.length}
           value={age}
-          handleSelect={setAge}
-          arrayForOptions={inputs.age}
+          onChange={setAge}
+          options={inputs.age}
         />
         <Select
-          textAttribute={"gender"}
-          isDisabled={!breeds.length}
+          text={"gender"}
+          disabled={!breeds.length}
           value={gender}
-          handleSelect={setGender}
-          arrayForOptions={inputs.gender}
+          onChange={setGender}
+          options={inputs.gender}
         />
         <Select
-          textAttribute={"coat"}
-          isDisabled={!breeds.length}
+          text={"coat"}
+          disabled={!breeds.length}
           value={coat}
-          handleSelect={setCoat}
-          arrayForOptions={inputs.coat}
+          onChange={setCoat}
+          options={inputs.coat}
         />
         <div className="control-wrapper">
           <label className="control-label" htmlFor="care">
