@@ -1,23 +1,31 @@
 import { useState, useEffect } from "react";
 import { retrieveKeyStorage, existKeyStorage } from "../../utils/utils";
+import { TypePet } from "../../utils/types";
 
-export function ButtonSave({ pet }) {
+type TypeButtonSave = {
+  content: TypePet
+}
+
+export function ButtonSave(props: TypeButtonSave) {
   const [save, setSave] = useState(false);
+
   function handleClick() {
-    let savePets = [];
-    if (existKeyStorage("savePets")) {
-      savePets = retrieveKeyStorage("savePets");
-    }
-    let repeated = savePets.find(function (element) {
-      return element.id === pet.id;
+    let savePets : TypePet [] | [] = [] ;
+
+    if (existKeyStorage("savePets")) savePets = retrieveKeyStorage("savePets");
+  
+    const repeated : TypePet | undefined = savePets.find(function (element: TypePet) {
+      return element.id === props.content.id;
     });
+
+
     if (repeated) {
-      savePets = savePets.filter(function (element) {
-        return element.id !== pet.id;
+      savePets = savePets.filter(function (element: TypePet) {
+        return element.id !== props.content.id;
       });
       setSave(false);
     } else {
-      savePets.push(pet);
+      savePets.push(props.content);
       setSave(true);
     }
     window.localStorage.setItem("savePets", JSON.stringify(savePets));
@@ -26,8 +34,8 @@ export function ButtonSave({ pet }) {
   useEffect(
     function () {
       if (existKeyStorage("savePets")) {
-        let repeated = retrieveKeyStorage("savePets").find(function (element) {
-          return element.id === pet.id;
+        const repeated : TypePet | undefined = retrieveKeyStorage("savePets").find(function (element: TypePet) {
+          return element.id === props.content.id;
         });
         repeated ? setSave(true) : setSave(false);
       }
