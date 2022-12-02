@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Results } from "../../components/results/Results.jsx";
+import { Results } from "../../components/results/Results";
 import { Button } from "../../components/button/Button";
 import { retrieveKeyStorage } from "../../utils/utils.js";
 import { fetchTypes } from "../../utils/services.js";
@@ -97,7 +97,7 @@ export function SavedDashboard() {
             className="saved__button saved__button-clear"
           />
         </form>
-        <Results pets={dashboard} />
+        <Results elements={dashboard} />
       </section>
     </main>
   );

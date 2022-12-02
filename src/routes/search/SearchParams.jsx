@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { inputs } from "../../utils/utils.js";
 import { fetchTypes, fetchAnimals } from "../../utils/services.js";
-import { Results } from "../../components/results/Results.jsx";
+import { Results } from "../../components/results/Results";
 import { useBreedList } from "../../utils/useBreedList.js";
 import { Loader } from "../../components/loader/Loader.jsx";
 import { Select } from "../../components/select/Select.jsx";
@@ -143,7 +143,7 @@ export function SearchParams() {
           className="search__submit"
         />
       </form>
-      {loading ? <Loader /> : <Results pets={pets} />}
+      {loading ? <Loader /> : <Results elements={pets} />}
       <div className="pagination-wrapper flex-center">
         <Button
           disabled={!counterPage}
