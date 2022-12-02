@@ -5,8 +5,8 @@ export function existKeyStorage(key: string) : boolean {
   return exist;
 }
 
-export function retrieveKeyStorage(key : string) {
-  const storage = JSON.parse(localStorage.getItem(key));
+export function retrieveKeyStorage(key : string) : TypePet [] {
+  const storage : TypePet [] = JSON.parse(localStorage.getItem(key));
   return storage;
 }
 

@@ -5,7 +5,7 @@ type TypeCarousel  = {
   { [key: string]: string } [] | []
 } ;
 
-export function Carousel(props: TypeCarousel) {
+export function Carousel(props: TypeCarousel): JSX.Element {
   const [active, setActive] = useState(0);
   function togglePrevious() {
     if (active > 0) {
