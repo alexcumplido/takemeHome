@@ -1,4 +1,4 @@
-# Take Me Home 2022
+# Take Me Home
 
 Take Me Home is a use case application for an animals rescue shelter in Barcelona. The association relied mostly on social media platforms to spread information about animals waiting to be adopted. Interest from people about the animals it was lost in the feed timeline. Therefore, this solution aims to connect people interested in adopting them with the shelter.
 
