@@ -60,7 +60,7 @@ export function SavedDashboard() {
         >
           <div className="control-wrapper">
             <label className="control-label" htmlFor="animal">
-              Animal type
+              Tipo de animal
             </label>
             <select
               className="control-select"
@@ -69,7 +69,7 @@ export function SavedDashboard() {
               onChange={(event) => setDashboard(filterType(event.target.value))}
               onBlur={(event) => setDashboard(filterType(event.target.value))}
             >
-              <option value="">Any</option>
+              <option value="">Selecciona</option>
               {animals &&
                 animals.map((element) => (
                   <option key={element.name} value={element.name}>
@@ -81,19 +81,19 @@ export function SavedDashboard() {
           <Button
             disabled={!dashboard}
             handleOnclick={handleDays}
-            text={"Most days waiting"}
+            text={"Más días esperando"}
             styleClass="saved__button"
           />
           <Button
             disabled={!dashboard}
             handleOnclick={handleUpdate}
-            text={"Update"}
+            text={"Actualizar"}
             styleClass="saved__button"
           />
           <Button
             disabled={!dashboard}
             handleOnclick={clearDashboard}
-            text={"Remove all"}
+            text={"Limpiar dashboard"}
             styleClass="saved__button saved__button-clear"
           />
         </form>
