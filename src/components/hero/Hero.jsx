@@ -4,13 +4,13 @@ export function Hero() {
   return (
     <section className="hero">
       <Link to="/search" className="link hero__link flex-center">
-        Search pets
+        Buscar animales
       </Link>
       <Link to="/dashboard" className="link flex-center hero__link flex-center">
-        See favourites
+        Ver favoritos
       </Link>
       <Link to="/" className="link flex-center hero__link flex-center">
-        Find shelters
+        Encontrar refugio
       </Link>
     </section>
   );

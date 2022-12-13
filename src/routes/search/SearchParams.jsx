@@ -87,41 +87,41 @@ export function SearchParams() {
           arrayForOptions={breeds}
         />
         <Select
-          textAttribute={"size"}
+          textAttribute={"tamaño"}
           isDisabled={!breeds.length}
           value={size}
           handleSelect={setSize}
           arrayForOptions={inputs.size}
         />
         <Select
-          textAttribute={"age"}
+          textAttribute={"edad"}
           isDisabled={!breeds.length}
           value={age}
           handleSelect={setAge}
           arrayForOptions={inputs.age}
         />
         <Select
-          textAttribute={"gender"}
+          textAttribute={"género"}
           isDisabled={!breeds.length}
           value={gender}
           handleSelect={setGender}
           arrayForOptions={inputs.gender}
         />
         <Select
-          textAttribute={"coat"}
+          textAttribute={"pelaje"}
           isDisabled={!breeds.length}
           value={coat}
           handleSelect={setCoat}
           arrayForOptions={inputs.coat}
         />
         <div className="control-wrapper">
-          <label className="control-label" htmlFor="care">
-            {inputs.care}
+          <label className="control-label" htmlFor="cuidados">
+            cuidados
           </label>
           <select
             className="control-select"
             disabled={!breeds.length}
-            id={"care"}
+            id={"cuidados"}
             value={care}
             onChange={(event) => setCare(event.target.value)}
             onBlur={(event) => setCare(event.target.value)}
@@ -139,7 +139,7 @@ export function SearchParams() {
         <Button
           disabled={!animal}
           handleOnclick={submit}
-          text={"search"}
+          text={"buscar"}
           styleClass="search__submit"
         />
       </form>
@@ -148,13 +148,13 @@ export function SearchParams() {
         <Button
           disabled={!counterPage}
           handleOnclick={decrementPage}
-          text={"Previous"}
+          text={"Anterior"}
           styleClass="button-pagination"
         />
         <Button
           disabled={!counterPage}
           handleOnclick={incrementPage}
-          text={"Next"}
+          text={"Siguiente"}
           styleClass="button-pagination"
         />
       </div>
