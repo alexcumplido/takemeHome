@@ -63,29 +63,43 @@ export function SavedDashboard() {
             event.preventDefault();
           }}
         >
-          <Select
-            text={"animal"}
+          <div className="control-wrapper">
+            <label className="control-label" htmlFor="animal">
+              Tipo de animal
+            </label>
+            <select
+              className="control-select"
+              disabled={!dashboard}
+              id="animal"
+              onChange={(event) => setDashboard(filterType(event.target.value))}
+              onBlur={(event) => setDashboard(filterType(event.target.value))}
+            >
+              <option value="">Selecciona</option>
+              {animals &&
+                animals.map((element) => (
+                  <option key={element.name} value={element.name}>
+                    {element.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+          <Button
             disabled={!dashboard}
-            onChange={handleSelect}
-            options={animals}
+            handleOnclick={handleDays}
+            text={"Más días esperando"}
+            styleClass="saved__button"
           />
           <Button
             disabled={!dashboard}
-            onClick={handleDays}
-            text={"Most days waiting"}
-            className="saved__button"
+            handleOnclick={handleUpdate}
+            text={"Actualizar"}
+            styleClass="saved__button"
           />
           <Button
             disabled={!dashboard}
-            onClick={handleUpdate}
-            text={"Update"}
-            className="saved__button"
-          />
-          <Button
-            disabled={!dashboard}
-            onClick={clearDashboard}
-            text={"Remove all"}
-            className="saved__button saved__button-clear"
+            handleOnclick={clearDashboard}
+            text={"Limpiar dashboard"}
+            styleClass="saved__button saved__button-clear"
           />
         </form>
         <Results elements={dashboard} />

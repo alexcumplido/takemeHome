@@ -45,13 +45,13 @@ export const ContactUs = () => {
         </div>
         <div className="control-wrapper">
           <label htmlFor="user_email" className="form__label sr-only">
-            Email
+            email
           </label>
           <input
             className="form__input"
             type="email"
             name="user_email"
-            placeholder="ganfald@gmail.com"
+            placeholder="janeappleseed@gmail.com"
             required
           />
         </div>

@@ -48,17 +48,17 @@ export function Header() {
           </li>
           <li>
             <Link className="link nav__link" to="/search">
-              Search
+              Búsqueda
             </Link>
           </li>
           <li>
             <Link className="link nav__link" to="/dashboard">
-              Saved
+              Dashboard
             </Link>
           </li>
           <li>
             <Link className="link nav__link" to="/contact">
-              Contact
+              Contacto
             </Link>
           </li>
         </ul>

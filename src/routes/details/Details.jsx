@@ -51,30 +51,30 @@ export function Details() {
           <List items={[pet.age, pet.gender, pet.size]} />
         </div>
         <div className="details__body">
-          <h2>Meet {pet.name}</h2>
+          <h2>Conoce a {pet.name}</h2>
           <p className="details__description">{pet.description}</p>
-          <p>Character:</p>
+          <p>Carácter:</p>
           <List items={[...pet.tags]} />
           <p>Status:{pet.status}</p>
         </div>
         <div className="shelter">
-          <h2>Shelter adress</h2>
+          <h2>Dirección refugio</h2>
           <List items={[pet.adress, pet.city, pet.state, pet.postcode]} />
           <List items={[pet.email, pet.phone]} />
         </div>
         <div className="details__footer">
           <Button
             disabled={false}
-            onClick={toggleModal}
-            text={`Adopt ${pet.name}`}
-            className="details__cta"
+            handleOnclick={toggleModal}
+            text={`Adopta a ${pet.name}`}
+            styleClass="details__cta"
           />
         </div>
       </article>
       {showModal ? (
         <Modal>
           <div className="modal-details">
-            <p>Would you like to adopt {pet.name}</p>
+            <p>Te gustaría adoptar a {pet.name} ?</p>
             <Button
               disabled={false}
               onClick={toggleModal}
@@ -85,7 +85,7 @@ export function Details() {
               className="button-navigate"
               onClick={() => navigate("/contact")}
             >
-              Yes
+              Si
             </button>
           </div>
         </Modal>

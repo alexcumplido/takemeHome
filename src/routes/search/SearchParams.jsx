@@ -86,41 +86,41 @@ export function SearchParams() {
           options={breeds}
         />
         <Select
-          text={"size"}
-          disabled={!breeds.length}
+          textAttribute={"tamaño"}
+          isDisabled={!breeds.length}
           value={size}
           onChange={setSize}
           options={inputs.size}
         />
         <Select
-          text={"age"}
-          disabled={!breeds.length}
+          textAttribute={"edad"}
+          isDisabled={!breeds.length}
           value={age}
           onChange={setAge}
           options={inputs.age}
         />
         <Select
-          text={"gender"}
-          disabled={!breeds.length}
+          textAttribute={"género"}
+          isDisabled={!breeds.length}
           value={gender}
           onChange={setGender}
           options={inputs.gender}
         />
         <Select
-          text={"coat"}
-          disabled={!breeds.length}
+          textAttribute={"pelaje"}
+          isDisabled={!breeds.length}
           value={coat}
           onChange={setCoat}
           options={inputs.coat}
         />
         <div className="control-wrapper">
-          <label className="control-label" htmlFor="care">
-            {inputs.care}
+          <label className="control-label" htmlFor="cuidados">
+            cuidados
           </label>
           <select
             className="control-select"
             disabled={!breeds.length}
-            id={"care"}
+            id={"cuidados"}
             value={care}
             onChange={(event) => setCare(event.target.value)}
             onBlur={(event) => setCare(event.target.value)}
@@ -137,24 +137,24 @@ export function SearchParams() {
         </div>
         <Button
           disabled={!animal}
-          onClick={submit}
-          text={"search"}
-          className="search__submit"
+          handleOnclick={submit}
+          text={"buscar"}
+          styleClass="search__submit"
         />
       </form>
       {loading ? <Loader /> : <Results elements={pets} />}
       <div className="pagination-wrapper flex-center">
         <Button
           disabled={!counterPage}
-          onClick={decrementPage}
-          text={"Previous"}
-          className="button-pagination"
+          handleOnclick={decrementPage}
+          text={"Anterior"}
+          styleClass="button-pagination"
         />
         <Button
           disabled={!counterPage}
-          onClick={incrementPage}
-          text={"Next"}
-          className="button-pagination"
+          handleOnclick={incrementPage}
+          text={"Siguiente"}
+          styleClass="button-pagination"
         />
       </div>
     </section>

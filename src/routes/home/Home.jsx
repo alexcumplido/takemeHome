@@ -25,7 +25,7 @@ export function Home() {
       ) : (
         <>
           <h2 className="home-heading container-standard">
-            Last animals viewed
+            Últimos animales vistos
           </h2>
           <Results elements={homeContent} />
         </>

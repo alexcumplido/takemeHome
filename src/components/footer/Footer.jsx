@@ -14,8 +14,8 @@ export function Footer() {
       <div className="footer__superior">
         <section className="footer__cta">
           <p>
-            Get the latest on pet adoption and care, sign up and hear from our
-            pets.
+            Recive las últimas noticias acerca del cuidado de animales con
+            nuestra newsletter.
           </p>
           <Button
             disabled={false}
@@ -28,32 +28,27 @@ export function Footer() {
           <ul>
             <li>
               <Link className="link footer__link" to="/">
-                About takemeHome
+                Acerca takemeHome
               </Link>
             </li>
             <li>
               <Link className="link footer__link" to="/">
-                Pet Adoption
+                Adopción de animales
               </Link>
             </li>
             <li>
               <Link className="link footer__link" to="/">
-                Pet care topics
+                Cuidado de mascotas
               </Link>
             </li>
             <li>
               <Link className="link footer__link" to="/">
-                Sitemap
+                Registro de refugios
               </Link>
             </li>
             <li>
               <Link className="link footer__link" to="/">
-                Pet care topics
-              </Link>
-            </li>
-            <li>
-              <Link className="link footer__link" to="/">
-                Shelter registration
+                Sitio del mapa
               </Link>
             </li>
           </ul>

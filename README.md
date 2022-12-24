@@ -1,30 +1,8 @@
-# TakemeHome 2022 | (Project in progress)
+# Take Me Home
 
-This project integrates the [Petfinder JS SDK](https://github.com/petfinder-com/petfinder-js-sdk/tree/master/docs#v2-api) allowing users to query and filter animals from a database. The main goal is to implement an agnostic architecture so integration is not limited to petfinder databases but others too. Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
+Take Me Home is a use case application for an animals rescue shelter in Barcelona. The association relied mostly on social media platforms to spread information about animals waiting to be adopted. Interest from people about the animals it was lost in the feed timeline. Therefore, this solution aims to connect people interested in adopting them with the shelter.
 
-**Quality test**
-
-Initial quality test will be developed in (Codefactor)[https://www.codefactor.io/] and [SonarQube](https://www.sonarqube.org/).
-
-## Requirements 🎯
-
-Soon
-
-## Usage 📝
-
-Soon too 🙄
-
-## Components 🧬
-
-The project will follow an Atomic Design driven development paired with a Component Driven UI.
-
-[Brad Frost chapter 2](https://atomicdesign.bradfrost.com/chapter-2/)
-
-[Brad Frost blog chapter](https://bradfrost.com/blog/post/atomic-web-design/)
-
-[Component Driven UI](https://www.componentdriven.org/)
-
-The modal component is implemented using [React portals](https://reactjs.org/docs/portals.html). Portals let you render a children into a DOM node outside of the DOM hierarchy from its parent component.
+Until the back-end integration can be completed, and therefore regional animals are avaible to check on them, this project is consuming the [Petfinder JS SDK](https://github.com/petfinder-com/petfinder-js-sdk/tree/master/docs#v2-api) so a complete query and filter with real animals can be performed by the user itself. Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
 
 ## Installation ⚙️
 
@@ -51,22 +29,25 @@ Clone this repository into a newly created directory
 
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript (ongoing TS migration)
 - TypeScript
 - React
 - Vite
+- Unit Testing (ongaing implementation with Vitest)
 
-As a build tool I used [Vite](https://vitejs.dev/) because of its fast configuration and also because creating a development environment from the ground up is a great oportunity to realize what dependencies and scripts the project will require.
+## Components 🧬
 
-## Visuals 👀
+The project followed a [Component Driven UI](https://www.componentdriven.org/) development methodology creating components from the bottom up and then combining them into complex ones.
 
-![Demo view](./src/assets/takemeHome.gif)
+The modal component is implemented using [React portals](https://reactjs.org/docs/portals.html). Portals let you render a children into a DOM node outside of the DOM hierarchy from its parent component.
+
+## Visuals
+
+![Demo view](https://alexcumplido.github.io/portfolio/images/pets.PNG)
 
 ## Roadmap
 
-- Migration from JavaScript to TypeScript
 - Use Sass
-- Implement testing via Vitest
 - Implement code quality test with codefactor and SonarQube
 
 ## Contributing 🙌
@@ -83,10 +64,6 @@ Alexandre Cumplido Bou
 [Linkedin](https://www.linkedin.com/in/alexandrecb/)
 
 [Portfolio](https://alexcumplido.github.io/portfolio/)
-
-## Acknowledgements 🙏
-
-Soon 🙄
 
 ## License 📃
 
