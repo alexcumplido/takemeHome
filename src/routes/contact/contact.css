@@ -1,5 +1,5 @@
 .section-form {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background-color: var(--clr-neutral-100);
 }
 
@@ -62,4 +62,8 @@
   background-color: var(--clr-accent-500);
   transition: all ease-in-out 0.4s;
   cursor: pointer;
+}
+
+.form-succeed {
+  padding: 7rem;
 }
