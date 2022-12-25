@@ -2,6 +2,14 @@ import { Link } from "react-router-dom";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useState } from "react";
 import { Button } from "../../components/button/Button";
+import {
+  FaTwitter,
+  FaFacebook,
+  FaInstagram,
+  FaPinterest,
+  FaYoutube,
+} from "react-icons/fa";
+
 export function Footer() {
   const [showModal, setShowModal] = useState(false);
   const [input, setInput] = useState({ value: "" });
@@ -56,11 +64,11 @@ export function Footer() {
       </div>
       <div className="footer__inferior">
         <section className="footer__social flex-center">
-          <i className="fa-brands fa-facebook-f"></i>
-          <i className="fa-brands fa-twitter"></i>
-          <i className="fa-brands fa-instagram"></i>
-          <i className="fa-brands fa-youtube"></i>
-          <i className="fa-brands fa-pinterest-p"></i>
+          <FaTwitter />
+          <FaFacebook />
+          <FaInstagram />
+          <FaPinterest />
+          <FaYoutube />
         </section>{" "}
         {showModal ? (
           <Modal>
