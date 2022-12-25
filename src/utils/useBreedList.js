@@ -1,12 +1,10 @@
-import { useState, useEffect, useDebugValue } from "react";
+import { useState, useEffect } from "react";
 import { client } from "./services.js";
 
 const localCache = {};
 
 export function useBreedList(animal) {
   const [breedList, setBreedList] = useState([]);
-  useDebugValue(`Number of value in cache ${Object.keys(localCache)}`);
-
   useEffect(
     function () {
       if (!animal) {
@@ -18,7 +16,15 @@ export function useBreedList(animal) {
         client.animalData
           .breeds(animal)
           .then(function onFulfillment(responseObject) {
-            localCache[animal] = responseObject.data.breeds || [];
+            if (responseObject.data.breeds.length) {
+              localCache[animal] = responseObject.data.breeds.map(function (
+                element
+              ) {
+                return element.name;
+              });
+            } else {
+              localCache[animal] = [];
+            }
             setBreedList(localCache[animal]);
           })
           .catch(function onRejection(responseObject) {

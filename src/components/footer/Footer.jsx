@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useState } from "react";
-import { Button } from "../../components/button/Button.jsx";
+import { Button } from "../../components/button/Button";
 export function Footer() {
   const [showModal, setShowModal] = useState(false);
   const [input, setInput] = useState({ value: "" });
@@ -17,9 +17,12 @@ export function Footer() {
             Recive las últimas noticias acerca del cuidado de animales con
             nuestra newsletter.
           </p>
-          <button onClick={toggleModal} className="footer__btn">
-            sign up
-          </button>
+          <Button
+            disabled={false}
+            onClick={toggleModal}
+            text={"sign up"}
+            className={"footer__btn"}
+          />
         </section>
         <nav className="footer__nav">
           <ul>
@@ -64,9 +67,9 @@ export function Footer() {
             <form className="modal__form">
               <Button
                 disabled={false}
-                handleOnclick={toggleModal}
+                onClick={toggleModal}
                 text={"X"}
-                styleClass={"button-close"}
+                className={"button-close"}
               />
               <p>Receive our monthly news!</p>
               <label htmlFor={"email"}>

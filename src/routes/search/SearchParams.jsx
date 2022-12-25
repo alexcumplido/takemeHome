@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { inputs } from "../../utils/utils.js";
-import { fetchTypes, fetchAnimals } from "../../utils/services.js";
-import { Results } from "../../components/results/Results.jsx";
+import { fetchTypes, fetchAnimals, inputs } from "../../utils/services.js";
+import { Results } from "../../components/results/Results";
 import { useBreedList } from "../../utils/useBreedList.js";
-import { Loader } from "../../components/loader/Loader.jsx";
-import { Select } from "../../components/select/Select.jsx";
-import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal.jsx";
-import { Button } from "../../components/button/Button.jsx";
+import { Select } from "../../components/select/Select";
+import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal";
+import { Button } from "../../components/button/Button";
+import { Loader } from "../../components/loader/Loader";
 
 export function SearchParams() {
   const [animals, setAnimals] = useState("");
@@ -73,46 +72,46 @@ export function SearchParams() {
     <section className="search container-standard">
       <form className="form">
         <SelectAnimal
-          textAttribute={"animal"}
+          text={"animal"}
           value={animal}
-          handleSelect={setAnimal}
-          extraHandleSelect={setBreed}
-          arrayForOptions={animals}
+          onChange={setAnimal}
+          extraOnChange={setBreed}
+          options={animals}
         />
         <Select
-          textAttribute={"breed"}
-          isDisabled={!breeds.length}
+          text={"breed"}
+          disabled={!breeds.length}
           value={breed}
-          handleSelect={setBreed}
-          arrayForOptions={breeds}
+          onChange={setBreed}
+          options={breeds}
         />
         <Select
-          textAttribute={"tamaño"}
-          isDisabled={!breeds.length}
+          text={"tamaño"}
+          disabled={!breeds.length}
           value={size}
-          handleSelect={setSize}
-          arrayForOptions={inputs.size}
+          onChange={setSize}
+          options={inputs.size}
         />
         <Select
-          textAttribute={"edad"}
-          isDisabled={!breeds.length}
+          text={"edad"}
+          disabled={!breeds.length}
           value={age}
-          handleSelect={setAge}
-          arrayForOptions={inputs.age}
+          onChange={setAge}
+          options={inputs.age}
         />
         <Select
-          textAttribute={"género"}
-          isDisabled={!breeds.length}
+          text={"género"}
+          disabled={!breeds.length}
           value={gender}
-          handleSelect={setGender}
-          arrayForOptions={inputs.gender}
+          onChange={setGender}
+          options={inputs.gender}
         />
         <Select
-          textAttribute={"pelaje"}
-          isDisabled={!breeds.length}
+          text={"pelaje"}
+          disabled={!breeds.length}
           value={coat}
-          handleSelect={setCoat}
-          arrayForOptions={inputs.coat}
+          onChange={setCoat}
+          options={inputs.coat}
         />
         <div className="control-wrapper">
           <label className="control-label" htmlFor="cuidados">
@@ -138,24 +137,24 @@ export function SearchParams() {
         </div>
         <Button
           disabled={!animal}
-          handleOnclick={submit}
+          onClick={submit}
           text={"buscar"}
-          styleClass="search__submit"
+          className="search__submit"
         />
       </form>
-      {loading ? <Loader /> : <Results pets={pets} />}
+      {loading ? <Loader /> : <Results elements={pets} />}
       <div className="pagination-wrapper flex-center">
         <Button
           disabled={!counterPage}
-          handleOnclick={decrementPage}
+          onClick={decrementPage}
           text={"Anterior"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
         <Button
           disabled={!counterPage}
-          handleOnclick={incrementPage}
+          onClick={incrementPage}
           text={"Siguiente"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
       </div>
     </section>

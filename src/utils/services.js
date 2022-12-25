@@ -1,5 +1,13 @@
 import { Client } from "@petfinder/petfinder-js";
-import { cleanObject } from "./utils.js";
+import { cleanObject } from "./utils";
+
+export const inputs = {
+  size: ["Small", "Medium", "Large", "Extra Large"],
+  age: ["Baby", "Young", "Adult", "Senior"],
+  gender: ["Female", "Male"],
+  coat: ["Hairless", "Short", "Medium", "Long", "Wire", "Curly"],
+  care: ["House-trained"],
+};
 
 const petApi = {
   API_KEY: "wb3Pi0bmejW1JKL079AroKYF9MCWKzvrHliSTvt7UBbCC1Blch",
@@ -37,7 +45,7 @@ export async function fetchTypes() {
   const result = await client.animalData
     .types()
     .then(function onFulfillment(responseObject) {
-      return responseObject.data.types;
+      return responseObject.data.types.map((element) => element.name);
     })
     .catch(function onRejection(responseObject) {
       console.log(responseObject);
@@ -68,6 +76,7 @@ export async function fetchAnimals(
       limit: 25,
     })
     .then(function onFulfillment(responseObject) {
+      console.log(responseObject.data.animals);
       let animalsCleaned = responseObject.data.animals.map((element) =>
         cleanObject(element)
       );
