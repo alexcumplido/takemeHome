@@ -76,8 +76,8 @@ export function SavedDashboard() {
             >
               <option value="">Selecciona</option>
               {animals &&
-                animals.map((element) => (
-                  <option key={element.name} value={element.name}>
+                animals.map((element, idx) => (
+                  <option key={idx} value={element.name}>
                     {element.name}
                   </option>
                 ))}
