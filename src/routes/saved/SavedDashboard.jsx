@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Results } from "../../components/results/Results";
 import { Button } from "../../components/button/Button";
 import { retrieveKeyStorage } from "../../utils/utils";
-import { fetchTypes } from "../../utils/services.js";
-import { Select } from "../../components/select/Select";
+import { fetchTypes } from "../../utils/services";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
@@ -19,7 +18,7 @@ export function SavedDashboard() {
       return retrieveKeyStorage("savePets");
     }
     let filtered = retrieveKeyStorage("savePets").filter(function (element) {
-      return element.type === typeAnimal;
+      return element.species === typeAnimal;
     });
     return filtered;
   }
@@ -40,10 +39,6 @@ export function SavedDashboard() {
 
   function handleUpdate() {
     setDashboard(retrieveKeyStorage("savePets"));
-  }
-
-  function handleSelect(value) {
-    setDashboard(filterType(value));
   }
 
   useEffect(function () {
@@ -76,8 +71,8 @@ export function SavedDashboard() {
             >
               <option value="">Selecciona</option>
               {animals &&
-                animals.map((element, idx) => (
-                  <option key={idx} value={element.name}>
+                animals.map((element) => (
+                  <option key={element.name} value={element.name}>
                     {element.name}
                   </option>
                 ))}
@@ -102,7 +97,7 @@ export function SavedDashboard() {
             className="saved__button saved__button-clear"
           />
         </form>
-        <Results elements={dashboard} />
+        <Results pets={dashboard} />
       </section>
     </main>
   );
