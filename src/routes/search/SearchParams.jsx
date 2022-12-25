@@ -137,7 +137,7 @@ export function SearchParams() {
         </div>
         <Button
           disabled={!animal}
-          handleOnclick={submit}
+          onClick={submit}
           text={"buscar"}
           className="search__submit"
         />
@@ -146,13 +146,13 @@ export function SearchParams() {
       <div className="pagination-wrapper flex-center">
         <Button
           disabled={!counterPage}
-          handleOnclick={decrementPage}
+          onClick={decrementPage}
           text={"Anterior"}
           className="button-pagination"
         />
         <Button
           disabled={!counterPage}
-          handleOnclick={incrementPage}
+          onClick={incrementPage}
           text={"Siguiente"}
           className="button-pagination"
         />

@@ -85,21 +85,21 @@ export function SavedDashboard() {
           </div>
           <Button
             disabled={!dashboard}
-            handleOnclick={handleDays}
+            onClick={handleDays}
             text={"Más días esperando"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={handleUpdate}
+            onClick={handleUpdate}
             text={"Actualizar"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={clearDashboard}
+            onClick={clearDashboard}
             text={"Limpiar dashboard"}
-            styleClass="saved__button saved__button-clear"
+            className="saved__button saved__button-clear"
           />
         </form>
         <Results elements={dashboard} />
