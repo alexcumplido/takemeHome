@@ -86,29 +86,29 @@ export function SearchParams() {
           options={breeds}
         />
         <Select
-          textAttribute={"tamaño"}
-          isDisabled={!breeds.length}
+          text={"tamaño"}
+          disabled={!breeds.length}
           value={size}
           onChange={setSize}
           options={inputs.size}
         />
         <Select
-          textAttribute={"edad"}
-          isDisabled={!breeds.length}
+          text={"edad"}
+          disabled={!breeds.length}
           value={age}
           onChange={setAge}
           options={inputs.age}
         />
         <Select
-          textAttribute={"género"}
-          isDisabled={!breeds.length}
+          text={"género"}
+          disabled={!breeds.length}
           value={gender}
           onChange={setGender}
           options={inputs.gender}
         />
         <Select
-          textAttribute={"pelaje"}
-          isDisabled={!breeds.length}
+          text={"pelaje"}
+          disabled={!breeds.length}
           value={coat}
           onChange={setCoat}
           options={inputs.coat}
@@ -139,7 +139,7 @@ export function SearchParams() {
           disabled={!animal}
           handleOnclick={submit}
           text={"buscar"}
-          styleClass="search__submit"
+          className="search__submit"
         />
       </form>
       {loading ? <Loader /> : <Results elements={pets} />}
@@ -148,13 +148,13 @@ export function SearchParams() {
           disabled={!counterPage}
           handleOnclick={decrementPage}
           text={"Anterior"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
         <Button
           disabled={!counterPage}
           handleOnclick={incrementPage}
           text={"Siguiente"}
-          styleClass="button-pagination"
+          className="button-pagination"
         />
       </div>
     </section>
