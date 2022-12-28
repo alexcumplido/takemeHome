@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { requestHomeDogs } from "../../utils/services";
-import { Results } from "../../components/results/Results.jsx";
-import { Hero } from "../../components/hero/Hero.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
+import { Results } from "../../components/results/Results";
+import { Hero } from "../../components/hero/Hero";
+import { Loader } from "../../components/loader/Loader";
 
 export function Home() {
   const [homeContent, setHomeContent] = useState([]);
@@ -27,7 +27,7 @@ export function Home() {
           <h2 className="home-heading container-standard">
             Últimos animales vistos
           </h2>
-          <Results pets={homeContent} />
+          <Results elements={homeContent} />
         </>
       )}
     </main>

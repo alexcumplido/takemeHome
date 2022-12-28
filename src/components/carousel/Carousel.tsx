@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-export function Carousel(params) {
-  const [active, setActive] = useState(0);
-  let photos = params.photos;
+type TypeCarousel  = {
+  photos : 
+  { [key: string]: string } [] | []
+} ;
 
+export function Carousel(props: TypeCarousel): JSX.Element {
+  const [active, setActive] = useState(0);
   function togglePrevious() {
     if (active > 0) {
       setActive(active - 1);
@@ -11,12 +14,12 @@ export function Carousel(params) {
   }
 
   function toggleNext() {
-    if (active < photos.length - 1) {
+    if (active < props.photos.length - 1) {
       setActive(active + 1);
     }
   }
 
-  return !photos.length ? (
+  return !props.photos.length ? (
     <div className="carousel">
       <svg
         viewBox="0 0 69 67"
@@ -36,7 +39,7 @@ export function Carousel(params) {
     <div className="carousel">
       <img
         className="carousel__active"
-        src={photos[active].full}
+        src={props.photos[active].full}
         alt="animal"
       />
       <div className="control">

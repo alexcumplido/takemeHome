@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Results } from "../../components/results/Results.jsx";
-import { Button } from "../../components/button/Button.jsx";
-import { retrieveKeyStorage } from "../../utils/utils.js";
+import { Results } from "../../components/results/Results";
+import { Button } from "../../components/button/Button";
+import { retrieveKeyStorage } from "../../utils/utils";
 import { fetchTypes } from "../../utils/services.js";
+import { Select } from "../../components/select/Select";
 
 export function SavedDashboard() {
   const [dashboard, setDashboard] = useState([]);
@@ -18,7 +19,7 @@ export function SavedDashboard() {
       return retrieveKeyStorage("savePets");
     }
     let filtered = retrieveKeyStorage("savePets").filter(function (element) {
-      return element.species === typeAnimal;
+      return element.type === typeAnimal;
     });
     return filtered;
   }
@@ -39,6 +40,10 @@ export function SavedDashboard() {
 
   function handleUpdate() {
     setDashboard(retrieveKeyStorage("savePets"));
+  }
+
+  function handleSelect(value) {
+    setDashboard(filterType(value));
   }
 
   useEffect(function () {
@@ -72,32 +77,32 @@ export function SavedDashboard() {
               <option value="">Selecciona</option>
               {animals &&
                 animals.map((element) => (
-                  <option key={element.name} value={element.name}>
-                    {element.name}
+                  <option key={element} value={element}>
+                    {element}
                   </option>
                 ))}
             </select>
           </div>
           <Button
             disabled={!dashboard}
-            handleOnclick={handleDays}
+            onClick={handleDays}
             text={"Más días esperando"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={handleUpdate}
+            onClick={handleUpdate}
             text={"Actualizar"}
-            styleClass="saved__button"
+            className="saved__button"
           />
           <Button
             disabled={!dashboard}
-            handleOnclick={clearDashboard}
+            onClick={clearDashboard}
             text={"Limpiar dashboard"}
-            styleClass="saved__button saved__button-clear"
+            className="saved__button saved__button-clear"
           />
         </form>
-        <Results pets={dashboard} />
+        <Results elements={dashboard} />
       </section>
     </main>
   );

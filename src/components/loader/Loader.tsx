@@ -1,4 +1,4 @@
-export function Loader() {
+export function Loader(): JSX.Element {
   return (
     <svg
       className="loader"

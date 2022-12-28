@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
-import { Loader } from "../../components/loader/Loader.jsx";
-import { ButtonSave } from "../../components/buttonSave/ButtonSave.jsx";
-import { Carousel } from "../../components/carousel/Carousel.jsx";
+import { Loader } from "../../components/loader/Loader";
+import { ButtonSave } from "../../components/buttonSave/ButtonSave";
+import { Carousel } from "../../components/carousel/Carousel";
 import { Modal } from "../../components/modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../components/button/Button.jsx";
-import { List } from "../../components/list/List.jsx";
+import { Button } from "../../components/button/Button";
+import { List } from "../../components/list/List";
 
 export function Details() {
   let { id } = useParams();
@@ -36,7 +36,7 @@ export function Details() {
     <section className="details container-standard">
       <Carousel photos={pet.photos} />
       <article className="details__content">
-        <ButtonSave pet={pet} />
+        <ButtonSave content={pet} />
         <div className="details__heading">
           <h1>{pet.name}</h1>
           <List items={[pet.species, pet.city, pet.state]} />
@@ -65,9 +65,9 @@ export function Details() {
         <div className="details__footer">
           <Button
             disabled={false}
-            handleOnclick={toggleModal}
+            onClick={toggleModal}
             text={`Adopta a ${pet.name}`}
-            styleClass="details__cta"
+            className="details__cta"
           />
         </div>
       </article>
@@ -77,9 +77,9 @@ export function Details() {
             <p>Te gustaría adoptar a {pet.name} ?</p>
             <Button
               disabled={false}
-              handleOnclick={toggleModal}
+              onClick={toggleModal}
               text={"X"}
-              styleClass={"button-close"}
+              className={"button-close"}
             />
             <button
               className="button-navigate"

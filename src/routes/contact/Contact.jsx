@@ -1,74 +1,89 @@
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import { useForm, ValidationError } from "@formspree/react";
 
 export const ContactUs = () => {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "contact_service",
-        "contact_service",
-        form.current,
-        "BKcXq_CegrvDvp6gt"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
-
+  const [state, handleSubmit] = useForm("xeqwjvnn");
+  if (state.succeeded) {
+    return <p className="form-succeed">Thanks for joining</p>;
+  }
   return (
     <section className="section-form section flex-center ">
-      <form
-        ref={form}
-        onSubmit={sendEmail}
-        className="form-email container-standard"
-      >
+      <form onSubmit={handleSubmit} className="form-email container-standard">
         <div className="control-wrapper">
-          <label htmlFor="user__name" className="form__label sr-only">
-            Name
+          <label htmlFor="firstName" className="form__label sr-only">
+            First Name
           </label>
           <input
-            className="form__input"
+            id="firstName"
             type="text"
-            name="user_name"
-            placeholder="Jane Apeelseed"
+            name="firstName"
+            className="form__input"
+            placeholder="First Name"
             required
+          />
+          <ValidationError
+            prefix="First Name"
+            field="firstName"
+            errors={state.errors}
           />
         </div>
         <div className="control-wrapper">
-          <label htmlFor="user_email" className="form__label sr-only">
-            email
+          <label htmlFor="lastName" className="form__label sr-only">
+            Last Name
           </label>
           <input
+            id="lastName"
+            type="text"
+            name="lastName"
             className="form__input"
-            type="email"
-            name="user_email"
-            placeholder="janeappleseed@gmail.com"
+            placeholder="Last Name"
             required
           />
+          <ValidationError
+            prefix="Last Name"
+            field="lastName"
+            errors={state.errors}
+          />
+        </div>
+        <div className="control-wrapper">
+          <label htmlFor="email" className="form__label sr-only">
+            Email Address
+          </label>
+          <input
+            id="email"
+            type="email"
+            className="form__input"
+            name="email"
+            placeholder="email@gmail.com"
+            required
+          />
+          <ValidationError prefix="Email" ield="email" errors={state.errors} />
         </div>
         <div className="control-wrapper">
           <label htmlFor="message" className="form__label sr-only">
             Message
           </label>
           <textarea
-            className="form__input"
+            id="message"
             name="message"
-            placeholder="Write your message here..."
+            className="form__input"
+            placeholder="Write your message"
             rows="7"
             cols="20"
             required
-          ></textarea>
+          />
+          <ValidationError
+            prefix="Message"
+            field="message"
+            errors={state.errors}
+          />
         </div>
-        <input type="submit" value="Send" className="form__button" />
+        <button
+          type="submit"
+          disabled={state.submitting}
+          className="form__button"
+        >
+          Submit
+        </button>
       </form>
     </section>
   );

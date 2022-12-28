@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
-import { ButtonSave } from "../buttonSave/ButtonSave.jsx";
+import { ButtonSave } from "../buttonSave/ButtonSave";
+import { TypePet } from "../../utils/types";
 
-export function Card({ pet }) {
+type TypeCard = {
+  content: TypePet,
+};
+
+export function Card(props: TypeCard): JSX.Element {
   return (
     <article className="card">
-      <ButtonSave pet={pet} />
-      <Link to={`/details/${pet.id}`} className="link card__link">
-        {pet.photos.length ? (
+      <ButtonSave content={props.content} />
+      <Link to={`/details/${props.content.id}`} className="link card__link">
+        {props.content.photos.length ? (
           <img
             className="card__image"
-            src={pet.photos[0].full}
-            alt={pet.name}
-            title={pet.name}
+            src={props.content.photos[0].full}
+            alt={props.content.name}
+            title={props.content.name}
           />
         ) : (
           <svg
@@ -30,10 +35,10 @@ export function Card({ pet }) {
         )}
       </Link>
       <div className="card__description">
-        <Link to={`/details/${pet.id}`} className="card__link">
-          <p className="card__name">{pet.name}</p>
+        <Link to={`/details/${props.content.id}`} className="card__link">
+          <p className="card__name">{props.content.name}</p>
         </Link>
-        <p>{`${pet.age} · ${pet.city} · ${pet.state}`}</p>
+        <p>{`${props.content.age} · ${props.content.city} · ${props.content.state}`}</p>
       </div>
     </article>
   );
