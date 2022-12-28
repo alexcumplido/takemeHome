@@ -65,9 +65,9 @@ export function Details() {
         <div className="details__footer">
           <Button
             disabled={false}
-            handleOnclick={toggleModal}
+            onClick={toggleModal}
             text={`Adopta a ${pet.name}`}
-            styleClass="details__cta"
+            className="details__cta"
           />
         </div>
       </article>
