@@ -76,7 +76,6 @@ export async function fetchAnimals(
       limit: 25,
     })
     .then(function onFulfillment(responseObject) {
-      console.log(responseObject.data.animals);
       let animalsCleaned = responseObject.data.animals.map((element) =>
         cleanObject(element)
       );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
@@ -10,8 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { List } from "../../components/list/List";
 import { useQuery } from "@tanstack/react-query";
+import { AdoptedAnimalContext } from "../../context/AdoptedAnimalContext";
 
 export function Details() {
+  const [animal, setAnimal] = useContext(AdoptedAnimalContext);
   let { id } = useParams();
   const results = useQuery(["details", id], requestPet);
   const [showModal, setShowModal] = useState(false);
@@ -75,7 +77,10 @@ export function Details() {
             />
             <button
               className="button-navigate"
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                setAnimal(pet);
+                navigate("/contact");
+              }}
             >
               Si
             </button>
