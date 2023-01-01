@@ -91,14 +91,28 @@ export async function fetchAnimals(
   return result;
 }
 
-export async function requestPet(id) {
-  const response = await client.animal
-    .show(id)
+export const requestPet = async ({ queryKey }) => {
+  const id = queryKey[1];
+  const apiRes = await client.animal
+    .show(`${id}`)
     .then(function onFulfillment(responseObject) {
       return cleanObject(responseObject.data.animal);
     })
     .catch(function onRejection(responseObject) {
       console.log(responseObject);
+      return responseObject;
     });
-  return response;
-}
+
+  return apiRes;
+};
+
+// const [pet, setPet] = useState();
+// const [loading, setLoading] = useState(true);
+// useEffect(function () {
+//   handleRequest();
+//   async function handleRequest() {
+//     let response = await requestPet(id);
+//     setPet(response);
+//     setLoading(false);
+//   }
+// }, []); //eslint-disable-line react-hooks/exhaustive-deps
