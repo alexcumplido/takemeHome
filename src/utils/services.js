@@ -19,28 +19,6 @@ export const client = new Client({
   secret: petApi.API_SRC,
 });
 
-export async function requestHomeDogs() {
-  const response = await client.animal
-    .search({
-      type: "Dog",
-      breed: "",
-      size: "",
-      age: "",
-      gender: "",
-      coat: "",
-      house_trained: false,
-      page: 1,
-      limit: 10,
-    })
-    .then(function onFulfillment(responseObject) {
-      return responseObject.data.animals.map((element) => cleanObject(element));
-    })
-    .catch(function onRejection(responseObject) {
-      console.log(responseObject);
-    });
-  return response;
-}
-
 export async function fetchTypes() {
   const result = await client.animalData
     .types()
@@ -104,14 +82,3 @@ export const requestPet = async ({ queryKey }) => {
 
   return apiRes;
 };
-
-// const [pet, setPet] = useState();
-// const [loading, setLoading] = useState(true);
-// useEffect(function () {
-//   handleRequest();
-//   async function handleRequest() {
-//     let response = await requestPet(id);
-//     setPet(response);
-//     setLoading(false);
-//   }
-// }, []); //eslint-disable-line react-hooks/exhaustive-deps
