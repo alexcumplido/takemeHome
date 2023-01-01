@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { requestPet } from "../../utils/services";
 import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
@@ -9,30 +9,24 @@ import { Modal } from "../../components/modal/Modal.jsx";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { List } from "../../components/list/List";
+import { useQuery } from "@tanstack/react-query";
+import { AdoptedAnimalContext } from "../../context/AdoptedAnimalContext";
 
 export function Details() {
+  const [animal, setAnimal] = useContext(AdoptedAnimalContext);
   let { id } = useParams();
-  const [pet, setPet] = useState();
-  const [loading, setLoading] = useState(true);
+  const results = useQuery(["details", id], requestPet);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate("");
+  const toggleModal = () => setShowModal(!showModal);
 
-  function toggleModal() {
-    setShowModal(!showModal);
+  if (results.isLoading) {
+    return <Loader />;
   }
 
-  useEffect(function () {
-    handleRequest();
-    async function handleRequest() {
-      let response = await requestPet(id);
-      setPet(response);
-      setLoading(false);
-    }
-  }, []); //eslint-disable-line react-hooks/exhaustive-deps
+  const pet = results.data;
 
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <section className="details container-standard">
       <Carousel photos={pet.photos} />
       <article className="details__content">
@@ -83,7 +77,10 @@ export function Details() {
             />
             <button
               className="button-navigate"
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                setAnimal(pet);
+                navigate("/contact");
+              }}
             >
               Si
             </button>
