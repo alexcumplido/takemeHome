@@ -10,6 +10,7 @@ import { SavedDashboard } from "./routes/saved/SavedDashboard.jsx";
 import { ContactUs } from "./routes/contact/Contact.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AdoptedAnimalContext } from "./context/AdoptedAnimalContext.js";
+import React from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,7 +22,7 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  const adoptedAnimal = useState(null);
+  const adoptedAnimal = React.useState(null);
   return (
     <StrictMode>
       <BrowserRouter>

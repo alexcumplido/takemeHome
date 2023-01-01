@@ -6,18 +6,10 @@ type TypeCarousel  = {
 } ;
 
 export function Carousel(props: TypeCarousel): JSX.Element {
-  const [active, setActive] = useState(0);
-  function togglePrevious() {
-    if (active > 0) {
-      setActive(active - 1);
-    }
-  }
-
-  function toggleNext() {
-    if (active < props.photos.length - 1) {
-      setActive(active + 1);
-    }
-  }
+  const lenght = props.photos.length - 1;
+  const [count, setActive] = useState(0);
+  const prevCount = () => (count > 0) && setActive(count - 1);
+  const nextCount = () => (count < lenght) && setActive(count + 1);
 
   return !props.photos.length ? (
     <div className="carousel">
@@ -39,11 +31,11 @@ export function Carousel(props: TypeCarousel): JSX.Element {
     <div className="carousel">
       <img
         className="carousel__active"
-        src={props.photos[active].full}
+        src={props.photos[count].full}
         alt="animal"
       />
       <div className="control">
-        <button onClick={togglePrevious} className="prev-slide">
+        <button onClick={prevCount} className="prev-slide">
           <svg
             className="icon-toggle"
             viewBox="0 0 1024 1024"
@@ -56,7 +48,7 @@ export function Carousel(props: TypeCarousel): JSX.Element {
             ></path>
           </svg>
         </button>
-        <button onClick={toggleNext} className="next-slide">
+        <button onClick={nextCount} className="next-slide">
           <svg
             className="icon-toggle"
             viewBox="0 0 1024 1024"
