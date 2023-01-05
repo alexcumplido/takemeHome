@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Modal } from "../../components/modal/Modal.jsx";
+import { Modal } from "../../components/modal/Modal";
 import { useState } from "react";
 import { Button } from "../../components/button/Button";
 import {

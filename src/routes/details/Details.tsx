@@ -1,30 +1,32 @@
 import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { requestPet } from "../../utils/services";
-import { ErrorBoundary } from "../../classComponents/ErrorBoundary.jsx";
+import { ErrorBoundary } from "../../classComponents/ErrorBoundary";
 import { Loader } from "../../components/loader/Loader";
 import { ButtonSave } from "../../components/buttonSave/ButtonSave";
 import { Carousel } from "../../components/carousel/Carousel";
-import { Modal } from "../../components/modal/Modal.jsx";
+import { Modal } from "../../components/modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { List } from "../../components/list/List";
 import { useQuery } from "@tanstack/react-query";
-import { AdoptedAnimalContext } from "../../context/AdoptedAnimalContext";
+import { TypePet } from "../../utils/types";
+import {AdoptedAnimalContext} from "../../context/AdoptedAnimalContext.js"
 
 export function Details() {
   const [animal, setAnimal] = useContext(AdoptedAnimalContext);
-  let { id } = useParams();
+  const { id } = useParams();
   const results = useQuery(["details", id], requestPet);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
   const toggleModal = () => setShowModal(!showModal);
 
   if (results.isLoading) {
     return <Loader />;
   }
+  const pet : TypePet = results.data;
 
-  const pet = results.data;
+  if(!pet) throw new Error("No pet avaible");
 
   return (
     <section className="details container-standard">

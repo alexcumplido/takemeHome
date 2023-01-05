@@ -3,21 +3,22 @@ import { retrieveKeyStorage, existKeyStorage } from "../../utils/utils";
 import { TypePet } from "../../utils/types";
 
 type TypeButtonSave = {
-  content: TypePet
-}
+  content: TypePet;
+};
 
 export function ButtonSave(props: TypeButtonSave) {
   const [save, setSave] = useState(false);
 
   function handleClick() {
-    let savePets : TypePet [] | [] = [] ;
+    let savePets: TypePet[] | [] = [];
 
     if (existKeyStorage("savePets")) savePets = retrieveKeyStorage("savePets");
-  
-    const repeated : TypePet | undefined = savePets.find(function (element: TypePet) {
+
+    const repeated: TypePet | undefined = savePets.find(function (
+      element: TypePet
+    ) {
       return element.id === props.content.id;
     });
-
 
     if (repeated) {
       savePets = savePets.filter(function (element: TypePet) {
@@ -34,7 +35,9 @@ export function ButtonSave(props: TypeButtonSave) {
   useEffect(
     function () {
       if (existKeyStorage("savePets")) {
-        const repeated : TypePet | undefined = retrieveKeyStorage("savePets").find(function (element: TypePet) {
+        const repeated: TypePet | undefined = retrieveKeyStorage(
+          "savePets"
+        ).find(function (element: TypePet) {
           return element.id === props.content.id;
         });
         repeated ? setSave(true) : setSave(false);

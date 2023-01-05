@@ -1,12 +1,11 @@
-
 import { TypePet } from "../../utils/types";
 import { Card } from "../card/Card";
 
 type TypeResults = {
-  elements: TypePet [];
+  elements: TypePet[];
 };
 
-export function Results(props : TypeResults): JSX.Element {
+export function Results(props: TypeResults): JSX.Element {
   return (
     <section className="container-standard results">
       {!props.elements || !props.elements.length ? (
@@ -15,7 +14,7 @@ export function Results(props : TypeResults): JSX.Element {
         props.elements.map(function (element) {
           return <Card key={element.id} content={element} />;
         })
-      )}  
+      )}
     </section>
   );
 }

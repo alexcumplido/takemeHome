@@ -1,10 +1,10 @@
 type TypeSelect = {
-  text: string
+  text: string;
   disabled: boolean;
-  value: string
-  onChange: React.ChangeEventHandler<HTMLSelectElement>
-  options: string []
-}
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  options: string[];
+};
 
 export function Select(props: TypeSelect): JSX.Element {
   return (
@@ -21,11 +21,11 @@ export function Select(props: TypeSelect): JSX.Element {
       >
         <option value="">Any</option>
         {props.options &&
-        props.options.map((element: string) => (
-          <option key={element} value={element}>
-            {element}
-          </option>
-        ))}
+          props.options.map((element: string) => (
+            <option key={element} value={element}>
+              {element}
+            </option>
+          ))}
       </select>
     </div>
   );

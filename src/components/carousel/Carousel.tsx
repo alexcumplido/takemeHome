@@ -1,15 +1,14 @@
 import { useState } from "react";
 
-type TypeCarousel  = {
-  photos : 
-  { [key: string]: string } [] | []
-} ;
+type TypeCarousel = {
+  photos: { [key: string]: string }[] | [];
+};
 
 export function Carousel(props: TypeCarousel): JSX.Element {
   const lenght = props.photos.length - 1;
   const [count, setActive] = useState(0);
-  const prevCount = () => (count > 0) && setActive(count - 1);
-  const nextCount = () => (count < lenght) && setActive(count + 1);
+  const prevCount = () => count > 0 && setActive(count - 1);
+  const nextCount = () => count < lenght && setActive(count + 1);
 
   return !props.photos.length ? (
     <div className="carousel">
