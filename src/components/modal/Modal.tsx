@@ -1,19 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, MutableRefObject, ReactElement } from "react";
 import { createPortal } from "react-dom";
-// import React, { ReactNode } from 'react';
-// type TypeModal = { children: React.ReactNode };
-export function Modal({ children }) {
-  const elementRef = useRef(null);
+
+export function Modal({ children }: { children: ReactElement }) {
+  const elementRef: MutableRefObject <HTMLDivElement | null> = useRef(null);
   if (!elementRef.current) {
     elementRef.current = document.createElement("div");
   }
+
   useEffect(function () {
     const modalRoot = document.getElementById("modal");
+    if(!modalRoot || !elementRef.current) {
+      return;
+    } 
     modalRoot.appendChild(elementRef.current);
-
     return function () {
-      modalRoot.removeChild(elementRef.current);
+      if(elementRef.current) modalRoot.removeChild(elementRef.current);    
     };
   }, []);
+  
   return createPortal(<>{children}</>, elementRef.current);
 }
