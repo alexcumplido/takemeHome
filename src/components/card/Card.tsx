@@ -3,7 +3,7 @@ import { ButtonSave } from "../buttonSave/ButtonSave";
 import { TypePet } from "../../utils/types";
 
 type TypeCard = {
-  content: TypePet,
+  content: TypePet;
 };
 
 export function Card(props: TypeCard): JSX.Element {

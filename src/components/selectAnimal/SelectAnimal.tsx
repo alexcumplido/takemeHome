@@ -1,10 +1,10 @@
 type TypeSelectAnimal = {
-  text: string
-  value: string
-  onChange: React.ChangeEventHandler<HTMLSelectElement>
-  extraOnChange: React.ChangeEventHandler<HTMLSelectElement>
-  options: string []
-}
+  text: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  extraOnChange: React.ChangeEventHandler<HTMLSelectElement>;
+  options: string[];
+};
 
 export function SelectAnimal(props: TypeSelectAnimal): JSX.Element {
   return (

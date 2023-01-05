@@ -1,8 +1,8 @@
 type TypeList = {
-  items: string [] | [];
-}
+  items: string[] | [];
+};
 
-export function List(props : TypeList) : JSX.Element {
+export function List(props: TypeList): JSX.Element {
   return (
     <ul className="flex-center">
       {props.items.length ? (

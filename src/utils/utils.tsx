@@ -1,16 +1,16 @@
 import { TypePet } from "../utils/types";
 
-export function existKeyStorage(key: string) : boolean {
-  const exist = (localStorage.getItem(key)) ? true : false;
+export function existKeyStorage(key: string): boolean {
+  const exist = localStorage.getItem(key) ? true : false;
   return exist;
 }
 
-export function retrieveKeyStorage(key : string) : TypePet [] {
-  const storage : TypePet [] = JSON.parse(localStorage.getItem(key));
+export function retrieveKeyStorage(key: string): TypePet[] {
+  const storage: TypePet[] = JSON.parse(localStorage.getItem(key));
   return storage;
 }
 
-export function cleanObject(element: any): TypePet{
+export function cleanObject(element: any): TypePet {
   const noData = "No data";
   return {
     id: element.id ?? noData,
