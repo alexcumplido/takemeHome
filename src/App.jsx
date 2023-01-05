@@ -5,7 +5,7 @@ import { Header } from "./components/header/Header.jsx";
 import { Footer } from "./components/footer/Footer.jsx";
 import { Home } from "./routes/home/Home.jsx";
 import { SearchParams } from "./routes/search/SearchParams.jsx";
-import { WrappedDetails } from "./routes//details/Details.jsx";
+import { WrappedDetails } from "./routes//details/Details";
 import { SavedDashboard } from "./routes/saved/SavedDashboard.jsx";
 import { ContactUs } from "./routes/contact/Contact.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
