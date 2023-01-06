@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { fetchTypes, fetchAnimals, inputs } from "../../utils/services.js";
+import { fetchTypes, fetchAnimals, inputs } from "../../utils/services";
 import { Results } from "../../components/results/Results";
-import { useBreedList } from "../../utils/useBreedList.js";
+import { useBreedList } from "../../utils/useBreedList";
 import { Select } from "../../components/select/Select";
 import { SelectAnimal } from "../../components/selectAnimal/SelectAnimal";
 import { Button } from "../../components/button/Button";

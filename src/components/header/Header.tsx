@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-export function Header() {
+export function Header(): JSX.Element {
   const [offsetMenu, setOffsetMenu] = useState(false);
   const location = useLocation();
 

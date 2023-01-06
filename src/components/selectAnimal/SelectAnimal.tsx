@@ -1,4 +1,4 @@
-type TypeSelectAnimal = {
+type SelectAnimalProps = {
   text: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
@@ -6,7 +6,7 @@ type TypeSelectAnimal = {
   options: string[];
 };
 
-export function SelectAnimal(props: TypeSelectAnimal): JSX.Element {
+export function SelectAnimal(props: SelectAnimalProps): JSX.Element {
   return (
     <div className="control-wrapper">
       <label className="control-label" htmlFor={`${props.text}`}>
