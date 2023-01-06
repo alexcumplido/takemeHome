@@ -1,11 +1,11 @@
-type TypeButton = {
+type TypeButtonProps = {
   disabled: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
   className: string;
 };
 
-export function Button(props: TypeButton): JSX.Element {
+export function Button(props: TypeButtonProps): JSX.Element {
   return (
     <button
       disabled={props.disabled}
