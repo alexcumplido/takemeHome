@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Modal } from "../../components/modal/Modal";
+import { Modal } from "../modal/Modal";
 import { useState } from "react";
-import { Button } from "../../components/button/Button";
+import { Button } from "../button/Button";
 import {
   FaTwitter,
   FaFacebook,
@@ -10,7 +10,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-export function Footer() {
+export function Footer(): JSX.Element {
   const [showModal, setShowModal] = useState(false);
   const [input, setInput] = useState({ value: "" });
   const handleChange = (event) => setInput({ value: event.target.value });
