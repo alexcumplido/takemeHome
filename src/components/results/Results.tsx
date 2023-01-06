@@ -1,11 +1,11 @@
 import { TypePet } from "../../utils/types";
 import { Card } from "../card/Card";
 
-type TypeResults = {
+type ResultsProps = {
   elements: TypePet[];
 };
 
-export function Results(props: TypeResults): JSX.Element {
+export function Results(props: ResultsProps): JSX.Element {
   return (
     <section className="container-standard results">
       {!props.elements || !props.elements.length ? (

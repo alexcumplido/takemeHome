@@ -11,7 +11,7 @@ import { Button } from "../../components/button/Button";
 import { List } from "../../components/list/List";
 import { useQuery } from "@tanstack/react-query";
 import { TypePet } from "../../utils/types";
-import {AdoptedAnimalContext} from "../../context/AdoptedAnimalContext.js"
+import { AdoptedAnimalContext } from "../../context/AdoptedAnimalContext.js";
 
 export function Details() {
   const [animal, setAnimal] = useContext(AdoptedAnimalContext);
@@ -24,9 +24,9 @@ export function Details() {
   if (results.isLoading) {
     return <Loader />;
   }
-  const pet : TypePet = results.data;
+  const pet: TypePet = results.data;
 
-  if(!pet) throw new Error("No pet avaible");
+  if (!pet) throw new Error("No pet avaible");
 
   return (
     <section className="details container-standard">

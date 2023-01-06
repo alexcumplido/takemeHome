@@ -1,7 +1,7 @@
-import { Component , ErrorInfo, ReactElement} from "react";
+import { Component, ErrorInfo, ReactElement } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-export class ErrorBoundary extends Component <{children: ReactElement}>{
+export class ErrorBoundary extends Component<{ children: ReactElement }> {
   state = { hasError: false, redirect: false };
 
   static getDerivedStateFromError() {
@@ -15,7 +15,7 @@ export class ErrorBoundary extends Component <{children: ReactElement}>{
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.log(error, info)
+    console.log(error, info);
   }
 
   render() {

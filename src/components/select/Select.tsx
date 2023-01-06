@@ -1,4 +1,4 @@
-type TypeSelect = {
+type SelectProps = {
   text: string;
   disabled: boolean;
   value: string;
@@ -6,7 +6,7 @@ type TypeSelect = {
   options: string[];
 };
 
-export function Select(props: TypeSelect): JSX.Element {
+export function Select(props: SelectProps): JSX.Element {
   return (
     <div className="control-wrapper">
       <label className="control-label" htmlFor={`${props.text}`}>
@@ -29,4 +29,12 @@ export function Select(props: TypeSelect): JSX.Element {
       </select>
     </div>
   );
+}
+
+type BoxProps = {
+  children: React.ReactNode;
+};
+
+export function Box({ children }: BoxProps): JSX.Element {
+  return <section>{children}</section>;
 }
