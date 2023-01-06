@@ -2,7 +2,7 @@ import { TypePet } from "../../utils/types";
 import { Card } from "../card/Card";
 
 type ResultsProps = {
-  elements: TypePet[];
+  elements: TypePet[] | undefined;
 };
 
 export function Results(props: ResultsProps): JSX.Element {
