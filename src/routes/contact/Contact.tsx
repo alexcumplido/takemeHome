@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AdoptedAnimalContext } from "../../context/AdoptedAnimalContext";
 import { Card } from "../../components/card/Card";
 
-export const ContactUs = () => {
+export const ContactUs = ():JSX.Element => {
   const [animal, setAnimal] = useContext(AdoptedAnimalContext);
   const [state, handleSubmit] = useForm("xeqwjvnn");
   if (state.succeeded) {
