@@ -1,12 +1,10 @@
 # Take Me Home
 
-Take Me Home is a use case application for an animals rescue shelter in Barcelona. The association relied mostly on social media platforms to spread information about animals waiting to be adopted. Interest from people about the animals it was lost in the feed timeline. Therefore, this solution aims to connect people interested in adopting them with the shelter.
+Take Me Home is a use case application for people looking to adopt an animal from a local rescue shelter. The association relied mostly on social media platforms to spread information about animals waiting to be adopted. Interest from people about the animals it was lost in the feed timeline. Therefore, this solution aims to connect people interested in adopting them with the shelter.
 
-Until the back-end integration can be completed, and therefore regional animals are avaible to check on them, this project is consuming the [Petfinder JS SDK](https://github.com/petfinder-com/petfinder-js-sdk/tree/master/docs#v2-api) so a complete query and filter with real animals can be performed by the user itself. Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
+This project is consuming the [Petfinder JS SDK](https://github.com/petfinder-com/petfinder-js-sdk/tree/master/docs#v2-api) so a complete query and filter with real animals can be performed by the user itself. Currently you can visualize the [deployed project here](https://takeme-home.vercel.app/).
 
-## Installation ⚙️
-
-Clone this repository into a newly created directory
+## Installation
 
 ```shell
     # Clone repo
@@ -25,15 +23,13 @@ Clone this repository into a newly created directory
     yarn dev
 ```
 
-## Stack ⚒️
+## Stack
 
-- HTML5
-- CSS3
+- HTML5, CSS3
 - JavaScript (ongoing TS migration)
 - TypeScript
 - React
 - Vite
-- Unit Testing (ongaing implementation with Vitest)
 
 ## Components 🧬
 
@@ -49,8 +45,9 @@ The modal component is implemented using [React portals](https://reactjs.org/doc
 
 - Use Sass
 - Implement code quality test with codefactor and SonarQube
+- Implement Unit Testing with Vitest
 
-## Contributing 🙌
+## Contributing
 
 1. Fork the repo
 2. Create a new branch
@@ -59,11 +56,9 @@ The modal component is implemented using [React portals](https://reactjs.org/doc
 
 ## Contact info 📫
 
-Alexandre Cumplido Bou
+alexcubou@gmail.com
 
 [Linkedin](https://www.linkedin.com/in/alexandrecb/)
-
-[Portfolio](https://alexcumplido.github.io/portfolio/)
 
 ## License 📃
 
