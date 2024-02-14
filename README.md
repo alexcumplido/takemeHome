@@ -56,8 +56,6 @@ The modal component is implemented using [React portals](https://reactjs.org/doc
 
 ## Contact info 📫
 
-alexcubou@gmail.com
-
 [Linkedin](https://www.linkedin.com/in/alexandrecb/)
 
 ## License 📃
